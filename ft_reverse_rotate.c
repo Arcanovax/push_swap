@@ -1,32 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 16:18:09 by mboutte          ###   ########.fr       */
+/*   Created: 2025/12/08 16:17:32 by mboutte           #+#    #+#             */
+/*   Updated: 2025/12/08 16:17:44 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct s_stack
-{
-	int				value;
-	struct s_stack	*next;
-}	t_stack;
-
-int	ft_swap_a(t_stack *a);
-int	ft_swap_b(t_stack *b);
-int	ft_swap_ab(t_stack *a, t_stack *b);
-int	ft_rotate_a(t_stack **a);
-int	ft_rotate_b(t_stack **b);
-int	ft_rotate_ab(t_stack **a, t_stack **b);
-
-#endif
