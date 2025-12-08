@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/08 17:40:33 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:57:45 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,20 @@ static int ft_rotate(t_stack **head)
 }
 int	ft_rotate_a(t_stack **a)
 {
-	if (ft_rotate(a) == -1 || write(1, "ra\n", 3) == -1)
-		return (-1);
-	return (0);
+	if (ft_rotate(a) == -1)
+		return (0);
+	if (write(1, "ra\n", 3) >= 0)
+		return (0);
+	return (-1);
 }
 
 int	ft_rotate_b(t_stack **b)
 {
-	if (ft_rotate(b) == -1 || write(1, "rb\n", 3) == -1)
-		return (-1);
-	return (0);
+	if (ft_rotate(b) == -1)
+		return (0);
+	if (write(1, "rb\n", 3) >= 0)
+		return (0);
+	return (-1);
 }
 int	ft_rotate_ab(t_stack **a, t_stack **b)
 {
@@ -49,9 +53,7 @@ int	ft_rotate_ab(t_stack **a, t_stack **b)
 	if (res_a == 0 && res_b == 0)
 		return (write(1, "rr\n", 3));
 	else if (res_a == 0)
-	{
 		return (write(1, "ra\n", 3) >= 0);
-	}
 	else if (res_b == 0)
 		return write(1, "rb\n", 3);
 	return (0);
