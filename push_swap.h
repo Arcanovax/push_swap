@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 14:26:03 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/08 16:09:30 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ typedef struct s_stack
 int	ft_swap_a(t_stack *a);
 int	ft_swap_b(t_stack *b);
 int	ft_swap_ab(t_stack *a, t_stack *b);
+int ft_push_a(t_stack **a, t_stack **b);
+int ft_push_b(t_stack **a, t_stack **b);
 
 #endif
