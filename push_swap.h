@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 14:26:03 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/08 16:07:09 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ typedef struct s_stack
 int	ft_swap_a(t_stack *a);
 int	ft_swap_b(t_stack *b);
 int	ft_swap_ab(t_stack *a, t_stack *b);
+int	ft_rotate_a(t_stack **a);
+int	ft_rotate_b(t_stack **a);
 
 #endif
