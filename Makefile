@@ -1,5 +1,6 @@
 NAME = push_swap
-SRCS = 		\
+
+SRCS = \
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 DEPS = $(patsubst %.c, %.d, $(SRCS))
@@ -11,14 +12,14 @@ CPPFLAGS += -MMD -MP
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $^ -o $@ $(INCLUDES)
+$(NAME): $(OBJS) $(DEPS)
+	$(CC) $^ -o $@ -c
 
 clean:
-	rm -fv $(OBJS) $(DEPS)
+	rm -f $(OBJS) $(DEPS)
 
 fclean: clean
-	rm -fv $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
