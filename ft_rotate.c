@@ -6,13 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/08 17:57:45 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/08 18:10:27 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int ft_rotate(t_stack **head)
+static int	ft_rotate(t_stack **head)
 {
 	t_stack	*current_node;
 
@@ -26,6 +26,7 @@ static int ft_rotate(t_stack **head)
 	current_node->next->next = NULL;
 	return (0);
 }
+
 int	ft_rotate_a(t_stack **a)
 {
 	if (ft_rotate(a) == -1)
@@ -43,6 +44,7 @@ int	ft_rotate_b(t_stack **b)
 		return (0);
 	return (-1);
 }
+
 int	ft_rotate_ab(t_stack **a, t_stack **b)
 {
 	int	res_a;
@@ -55,6 +57,6 @@ int	ft_rotate_ab(t_stack **a, t_stack **b)
 	else if (res_a == 0)
 		return (write(1, "ra\n", 3) >= 0);
 	else if (res_b == 0)
-		return write(1, "rb\n", 3);
+		return (write(1, "rb\n", 3));
 	return (0);
 }

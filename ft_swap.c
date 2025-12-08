@@ -6,13 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 18:00:39 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/08 18:09:59 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int ft_swap(t_stack *head)
+static int	ft_swap(t_stack *head)
 {
 	int	tmp;
 
@@ -22,7 +22,8 @@ static int ft_swap(t_stack *head)
 	head->value = head->next->value;
 	head->next->value = tmp;
 	return (0);
-} 
+}
+
 int	ft_swap_a(t_stack *a)
 {
 	if (ft_swap(a) == -1)
@@ -53,6 +54,6 @@ int	ft_swap_ab(t_stack *a, t_stack *b)
 	else if (res_a == 0)
 		return (write(1, "sa\n", 3) >= 0);
 	else if (res_b == 0)
-		return write(1, "sb\n", 3);
+		return (write(1, "sb\n", 3));
 	return (0);
 }

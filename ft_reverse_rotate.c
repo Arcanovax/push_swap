@@ -6,16 +6,16 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:17:32 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/08 17:57:44 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/08 18:09:27 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int ft_reverse_rotate(t_stack **head)
+static int	ft_reverse_rotate(t_stack **head)
 {
 	t_stack	*last;
-	t_stack *current;
+	t_stack	*current;
 
 	if (!head || !*head || !(*head)->next)
 		return (-1);
@@ -59,6 +59,6 @@ int	ft_reverse_rotate_ab(t_stack **a, t_stack **b)
 	else if (res_a == 0)
 		return (write(1, "rra\n", 4) >= 0);
 	else if (res_b == 0)
-		return write(1, "rrb\n", 4);
+		return (write(1, "rrb\n", 4));
 	return (0);
 }
