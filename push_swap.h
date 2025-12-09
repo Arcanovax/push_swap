@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 18:08:12 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 09:29:04 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_stack
+
+typedef struct	s_stack
+{
+	t_stack	*head;
+	t_stack	*tails;
+}	t_stack;
+
+
+
+typedef struct s_node
 {
 	int				value;
-	struct s_stack	*next;
-}	t_stack;
+	t_node	*prev;
+	t_node	*next;
+}	t_node;
 
 int	ft_swap_a(t_stack *a);
 int	ft_swap_b(t_stack *b);
