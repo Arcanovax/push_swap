@@ -36,13 +36,13 @@ typedef struct s_node
 int	ft_swap_a(t_stack *a);
 int	ft_swap_b(t_stack *b);
 int	ft_swap_ab(t_stack *a, t_stack *b);
-int	ft_push_a(t_stack **a, t_stack **b);
-int	ft_push_b(t_stack **a, t_stack **b);
-int	ft_rotate_a(t_stack **a);
-int	ft_rotate_b(t_stack **b);
-int	ft_rotate_ab(t_stack **a, t_stack **b);
-int	ft_reverse_rotate_a(t_stack **a);
-int	ft_reverse_rotate_b(t_stack **b);
-int	ft_reverse_rotate_ab(t_stack **a, t_stack **b);
+int	ft_push_a(t_stack *a, t_stack *b);
+int	ft_push_b(t_stack *a, t_stack *b);
+int	ft_rotate_a(t_stack *a);
+int	ft_rotate_b(t_stack *b);
+int	ft_rotate_ab(t_stack *a, t_stack *b);
+int	ft_reverse_rotate_a(t_stack *a);
+int	ft_reverse_rotate_b(t_stack *b);
+int	ft_reverse_rotate_ab(t_stack *a, t_stack *b);
 
 #endif
