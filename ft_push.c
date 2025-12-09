@@ -6,26 +6,39 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:33:35 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 18:11:49 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 13:00:23 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_push(t_stack **stack, t_stack **node)
+static int	ft_push(t_stack *stack_target, t_stack *stack_node)
 {
-	t_stack	*tmp;
-
-	if (*node == NULL)
+	t_node *node;
+	
+	if (!stack_node || !stack_node->head)
 		return (-1);
-	tmp = *node;
-	(*node) = (*node)->next;
-	tmp->next = *stack;
-	*stack = tmp;
+	node = stack_node->head;
+	stack_node->head = node->next;
+	if (stack_node->head == NULL)
+		stack_node->tails = NULL;
+	else
+		stack_node->head->prev = NULL;
+	node->next = stack_target->head;
+	if (stack_target->head == NULL)
+	{
+		stack_target->head = node;
+		stack_target->tails = node;
+	}
+	else
+	{	
+		stack_target->head->prev = node;	
+		stack_target->head = node;
+	}
 	return (0);
 }
 
-int	ft_push_a(t_stack **a, t_stack **b)
+int	ft_push_a(t_stack *a, t_stack *b)
 {
 	if (ft_push(a, b) == -1)
 		return (0);
@@ -34,7 +47,7 @@ int	ft_push_a(t_stack **a, t_stack **b)
 	return (-1);
 }
 
-int	ft_push_b(t_stack **a, t_stack **b)
+int	ft_push_b(t_stack *a, t_stack *b)
 {
 	if (ft_push(b, a) == -1)
 		return (0);

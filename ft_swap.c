@@ -6,21 +6,21 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/08 18:09:59 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 13:29:13 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_swap(t_stack *head)
-{
+static int	ft_swap(t_stack *stack)
+{// waring if tail is the second node tails must be change
 	int	tmp;
 
-	if (!head || !head->next)
+	if (!stack || !stack->head || !stack->head->next)
 		return (-1);
-	tmp = head->value;
-	head->value = head->next->value;
-	head->next->value = tmp;
+	tmp = stack->head->value;
+	stack->head->value = stack->head->next->value;
+	stack->head->next->value = tmp;
 	return (0);
 }
 
