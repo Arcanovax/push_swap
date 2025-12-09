@@ -6,11 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/12/09 10:31:33 by mthetcha         ###   ########lyon.fr   */
-=======
-/*   Updated: 2025/12/09 12:58:16 by mboutte          ###   ########.fr       */
->>>>>>> origin
+/*   Updated: 2025/12/09 16:28:58 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +40,6 @@ int	ft_rotate_ab(t_stack *a, t_stack *b);
 int	ft_reverse_rotate_a(t_stack *a);
 int	ft_reverse_rotate_b(t_stack *b);
 int	ft_reverse_rotate_ab(t_stack *a, t_stack *b);
+int ft_randinx(t_stack *a);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 15:27:20 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 16:29:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,11 @@ int	main(int argc, char **argv)
 			return (0);
 		i++;
 	}
+	
 	if (flag == 1)
 		printf("simple\n");
+	printf("flag:%d\n", flag);
+	ft_randinx(stack);
 	display_stack(stack);
 }
 
