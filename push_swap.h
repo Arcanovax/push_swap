@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 10:10:28 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 10:31:06 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 typedef struct	s_stack
 {
-	struct t_node	*head;
-	struct t_node	*tails;
+	struct s_node	*head;
+	struct s_node	*tails;
 }	t_stack;
 
 typedef struct s_node
 {
 	int				value;
-	struct t_node	*prev;
-	struct t_node	*next;
+	struct s_node	*prev;
+	struct s_node	*next;
 }	t_node;
 
 int	ft_swap_a(t_stack *a);
@@ -34,9 +34,9 @@ int	ft_swap_b(t_stack *b);
 int	ft_swap_ab(t_stack *a, t_stack *b);
 int	ft_push_a(t_stack **a, t_stack **b);
 int	ft_push_b(t_stack **a, t_stack **b);
-int	ft_rotate_a(t_stack **a);
-int	ft_rotate_b(t_stack **b);
-int	ft_rotate_ab(t_stack **a, t_stack **b);
+int	ft_rotate_a(t_stack *a);
+int	ft_rotate_b(t_stack *b);
+int	ft_rotate_ab(t_stack *a, t_stack *b);
 int	ft_reverse_rotate_a(t_stack **a);
 int	ft_reverse_rotate_b(t_stack **b);
 int	ft_reverse_rotate_ab(t_stack **a, t_stack **b);
