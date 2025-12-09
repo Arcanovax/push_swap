@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 09:49:03 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 10:10:28 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 typedef struct	s_stack
 {
-	t_node	*head;
-	t_node	*tails;
+	struct t_node	*head;
+	struct t_node	*tails;
 }	t_stack;
 
 typedef struct s_node
 {
 	int				value;
-	t_node	*prev;
-	t_node	*next;
+	struct t_node	*prev;
+	struct t_node	*next;
 }	t_node;
 
 int	ft_swap_a(t_stack *a);
