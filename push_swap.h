@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 09:29:04 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 09:49:03 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-
 typedef struct	s_stack
 {
-	t_stack	*head;
-	t_stack	*tails;
+	t_node	*head;
+	t_node	*tails;
 }	t_stack;
-
-
 
 typedef struct s_node
 {
