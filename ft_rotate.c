@@ -6,14 +6,14 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/09 10:45:25 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 11:37:49 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	ft_rotate(t_stack *stack)
-{// set the tails to head  
+{
 	t_node	*head;
 	t_node	*tails;
 	
@@ -21,7 +21,7 @@ static int	ft_rotate(t_stack *stack)
 		return (-1);
 	head = stack->head;
 	tails = stack->tails;
-	if (!head->next)
+	if (!head->next || !tails->prev)
 		return (-1);
 	stack->head = head->next;
 	stack->head->prev = NULL;

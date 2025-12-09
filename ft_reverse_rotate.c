@@ -6,30 +6,33 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:17:32 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/08 18:09:27 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 11:41:04 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_reverse_rotate(t_stack **head)
-{
-	t_stack	*last;
-	t_stack	*current;
+static int	ft_reverse_rotate(t_stack *stack)
+{ // set the tails to the head
+	t_node	*head;
+	t_node	*tails;
 
-	if (!head || !*head || !(*head)->next)
+	if (!stack || !stack->head || !stack->tails)
 		return (-1);
-	last = *head;
-	while (last->next->next)
-		last = last->next;
-	current = last->next;
-	current->next = *head;
-	*head = current;
-	last->next = NULL;
+	head = stack->head;
+	tails = stack->tails;
+	if (!head->next || !tails->prev)
+		return (-1);
+	stack->tails = stack->tails->prev;
+	stack->tails->next = NULL;
+	stack->head = tails;
+	tails->next = head;
+	head->prev = tails;
+	tails->prev = NULL;
 	return (0);
 }
 
-int	ft_reverse_rotate_a(t_stack **a)
+int	ft_reverse_rotate_a(t_stack *a)
 {
 	if (ft_reverse_rotate(a) == -1)
 		return (0);
@@ -38,7 +41,7 @@ int	ft_reverse_rotate_a(t_stack **a)
 	return (-1);
 }
 
-int	ft_reverse_rotate_b(t_stack **b)
+int	ft_reverse_rotate_b(t_stack *b)
 {
 	if (ft_reverse_rotate(b) == -1)
 		return (0);
@@ -47,7 +50,7 @@ int	ft_reverse_rotate_b(t_stack **b)
 	return (-1);
 }
 
-int	ft_reverse_rotate_ab(t_stack **a, t_stack **b)
+int	ft_reverse_rotate_ab(t_stack *a, t_stack *b)
 {
 	int	res_a;
 	int	res_b;
