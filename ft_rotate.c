@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/09 10:11:05 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/09 10:27:45 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 static int	ft_rotate(t_stack *stack)
 {// set the tails to head  
-	t_stack	*current_node;
-	t_node *head;
+	t_node	*head;
+	t_node	*tails;
 	
-	if (!stack || stack->head || stack->head->next)
-		return (-1);	
-	stack->tails->next = stack->head;
+	if (!stack || stack->head || stack->tails)
+		return (-1);
+	head = stack->head;
+	tails = stack->tails;
+	if (!head->next)
+		return (-1);
+	tails->next = stack->head;
 	stack->tails = stack->head;
-	stack->head = stack->head->next;
-	stack->tails->next = NULL;
+	stack->head = head->next;
+	head->next = NULL;
 	return (0);
 }
 
-int	ft_rotate_a(t_stack stack)
+int	ft_rotate_a(t_stack *a)
 {
 	if (ft_rotate(a) == -1)
 		return (0);
@@ -35,7 +39,7 @@ int	ft_rotate_a(t_stack stack)
 	return (-1);
 }
 
-int	ft_rotate_b(t_stack **b)
+int	ft_rotate_b(t_stack *b)
 {
 	if (ft_rotate(b) == -1)
 		return (0);
@@ -44,7 +48,7 @@ int	ft_rotate_b(t_stack **b)
 	return (-1);
 }
 
-int	ft_rotate_ab(t_stack **a, t_stack **b)
+int	ft_rotate_ab(t_stack *a, t_stack *b)
 {
 	int	res_a;
 	int	res_b;
