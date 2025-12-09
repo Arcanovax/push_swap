@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 10:10:28 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 10:31:33 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 typedef struct	s_stack
 {
-	struct t_node	*head;
-	struct t_node	*tails;
+	struct s_node	*head;
+	struct s_node	*tails;
 }	t_stack;
 
 typedef struct s_node
 {
 	int				value;
-	struct t_node	*prev;
-	struct t_node	*next;
+	struct s_node	*prev;
+	struct s_node	*next;
 }	t_node;
 
 int	ft_swap_a(t_stack *a);
