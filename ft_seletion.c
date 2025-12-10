@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_seletion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 16:31:45 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 17:10:58 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 int	ft_seletion(t_stack *a, t_stack *b)
 {
-	int imin;
-	int min;
-	int i;
-	int j;
-	int size;
+	int	imin;
+	int	min;
+	int	i;
+	int	j;
+	int	size;
 
 	size = 6;
 	j = 0;
-	while(j < size - 1)
+	while (j < size - 1)
 	{
 		i = 0;
 		imin = 0;
 		min = a->head->value;
-		while(i < size-j)
+		while (i < size - j)
 		{
 			if (a->head->value < min)
 			{
@@ -39,21 +39,19 @@ int	ft_seletion(t_stack *a, t_stack *b)
 			i++;
 		}
 		i = 0;
-		while(i < imin)
+		while (i < imin)
 		{
 			ft_rotate_a(a);
 			i++;
 		}
-		ft_push_b(a,b);
+		ft_push_b(a, b);
 		j++;
 	}
 	j = 0;
-	while(j < size - 1)
+	while (j < size - 1)
 	{
-		ft_push_a(a,b);
+		ft_push_a(a, b);
 		j++;
 	}
-
-
 	return (0);
 }
