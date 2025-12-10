@@ -6,14 +6,14 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:17:32 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/09 11:53:40 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:27:20 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	ft_reverse_rotate(t_stack *stack)
-{ // set the tails to the head
+{
 	t_node	*head;
 	t_node	*tails;
 

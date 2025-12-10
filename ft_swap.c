@@ -6,14 +6,14 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 13:29:13 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:26:58 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	ft_swap(t_stack *stack)
-{// waring if tail is the second node tails must be change
+{
 	int	tmp;
 
 	if (!stack || !stack->head || !stack->head->next)
