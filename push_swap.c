@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 14:54:08 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 14:58:33 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_full_of_int(char *str)
 	i = -1;
 	while (str[++i])
 		if (!('0' <= str[i] && str[i] <= '9') && !(str[i] == ' ')
-			&& !(9 <= str[i] && str[i] <= 13))
+			&& !(9 <= str[i] && str[i] <= 13) && !(str[i] == '-'))
 			return (0);
 	return (1);
 }
@@ -101,7 +101,7 @@ int	ft_atoi(const char *str)
 		i++;
 		sign = -sign;
 	}
-	while (str[i] != '\0')
+	while (str[i] && ('0'<= str[i] && str[i] <= '9'))
 	{
 		all = all * 10 + str[i] - '0';
 		i++;
