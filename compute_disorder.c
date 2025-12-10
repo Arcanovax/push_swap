@@ -3,61 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   compute_disorder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:01:04 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 09:34:01 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 15:37:13 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	#include <stdio.h>
 #include "push_swap.h"
 
-double compute_disorder(t_stack *a)
+double	compute_disorder(t_stack *stack)
 {
-	long		mistakes = 0;
-	long		total_pairs = 0;
-	t_stack		*i;
-	t_stack		*j;
+	long	mistakes;
+	long	total_pairs;
+	t_node	*head;
+	t_node	*node;
 
-	i = a;
-
-	while(i->next != NULL)
+	mistakes = 0;
+	total_pairs = (double)stack->size;
+	head = stack->head;
+	node = head->next;
+	while (head->next != NULL)
 	{
-		j = i->next;
-		while(j != NULL)
+		node = head->next;
+		while (node != NULL)
 		{
-			total_pairs++;
-			if(i->value > j->value)
+			if (head->value > node->value)
 				mistakes++;
-			j = j->next;
+			node = node->value;
 		}
-		i = i->next;
+		head = head->next;
 	}
-	return ((double)mistakes/(double)total_pairs);
+	return ((double)mistakes / (double)total_pairs);
 }
-/*
-int main(void)
-{
-	t_stack *a1;
-	t_stack *a2;
-	t_stack *a3;
-	t_stack *a4;
-
-	a1 = malloc(sizeof(t_stack));
-	a2 = malloc(sizeof(t_stack));
-	a3 = malloc(sizeof(t_stack));
-	a4 = malloc(sizeof(t_stack));
-
-	a1->value = 1;
-	a1->next = a2;
-	a2->value = 2;
-	a2->next = a3;
-	a3->value = 4;
-	a3->next = a4;
-	a4->value = 3;
-	a4->next = NULL;
-
-	printf("%f", compute_disorder(a1));
-}
-*/
