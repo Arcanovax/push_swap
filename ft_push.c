@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:33:35 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 13:00:23 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:30:16 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_push(t_stack *stack_target, t_stack *stack_node)
 {
-	t_node *node;
-	
+	t_node	*node;
+
 	if (!stack_node || !stack_node->head)
 		return (-1);
 	node = stack_node->head;
@@ -31,10 +31,12 @@ static int	ft_push(t_stack *stack_target, t_stack *stack_node)
 		stack_target->tails = node;
 	}
 	else
-	{	
-		stack_target->head->prev = node;	
+	{
+		stack_target->head->prev = node;
 		stack_target->head = node;
 	}
+	stack_target->size++;
+	stack_node->size--;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:00:35 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/09 13:33:11 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:36:31 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_print_stack(t_stack *stk)
 {
 	t_node *node = stk->head;
-	__builtin_printf("stack:\nhead: % 2d|%p\ntails:%2d|%p\n", stk->head->value, stk->head, stk->tails->value, stk->tails);
+	__builtin_printf("stack\nhead: % 2d|%p\ntails:%2d|%p\nsize:%3d|\n", stk->head->value, stk->head, stk->tails->value, stk->tails, stk->size);
 	while (node) {
 		__builtin_printf("prev:%10p|node_a:%2d|%p|next:%-10p\n",node->prev, node->value, node, node->next);
 		node = node->next;
@@ -59,46 +59,51 @@ int	main(void)
 
 	stk_a->head = a1;
 	stk_a->tails = a4;
+	stk_a->size = 4;
 	
-	t_node *b1 = malloc(sizeof(t_node));
-	t_node *b2 = malloc(sizeof(t_node));
-	t_node *b3 = malloc(sizeof(t_node));
-	t_node *b4 = malloc(sizeof(t_node));
+	// t_node *b1 = malloc(sizeof(t_node));
+	// t_node *b2 = malloc(sizeof(t_node));
+	// t_node *b3 = malloc(sizeof(t_node));
+	// t_node *b4 = malloc(sizeof(t_node));
 	t_stack *stk_b = malloc(sizeof(t_stack));
 
-	b1->prev = NULL;
-	b1->value = 5;
-	b1->next = b2;
-	b2->prev = b1;
-	b2->value = 6;
-	b2->next = b3;
-	b3->prev = b2;
-	b3->value = 7;
-	b3->next = b4;
-	b4->prev = b3;
-	b4->value = 8;
-	b4->next = NULL;
+	// b1->prev = NULL;
+	// b1->value = 5;
+	// b1->next = b2;
+	// b2->prev = b1;
+	// b2->value = 6;
+	// b2->next = b3;
+	// b3->prev = b2;
+	// b3->value = 7;
+	// b3->next = b4;
+	// b4->prev = b3;
+	// b4->value = 8;
+	// b4->next = NULL;
 
-	stk_b->head = b1;
-	stk_b->tails = b4;
+	stk_b->head =  NULL;
+	stk_b->tails = NULL;
+	stk_b->size =  0;
 
-
-	// test_ft_swap()
-	ft_print_stack(stk_a);
-	ft_swap_a(stk_a);
-	ft_print_stack(stk_a);
+	// // test_ft_swap()
+	// ft_print_stack(stk_a);
+	// ft_swap_a(stk_a);
+	// ft_print_stack(stk_a);
 	
-	// test ft_push()
-	ft_print_stack(stk_a); ft_print_stack(stk_b);
-	ft_push_a(stk_a, stk_b);
-	ft_print_stack(stk_a); ft_print_stack(stk_b);
+	// // test ft_push()
+	// ft_print_stack(stk_a); ft_print_stack(stk_b);
+	// ft_push_a(stk_a, stk_b);
+	// ft_print_stack(stk_a); ft_print_stack(stk_b);
 	
-	// test ft_reverse_rotate() and / or ft_rotate()
-	t_node *node = stk_a->head;
+	// // test ft_reverse_rotate() and / or ft_rotate()
+	// ft_print_stack(stk_a);
+	// ft_rotate_a(stk_a);
+	// ft_reverse_rotate_a(stk_a);
+	// ft_print_stack(stk_a);
+	// ft_free_stack(stk_a);
+	
 	ft_print_stack(stk_a);
-	ft_rotate_a(stk_a);
-	ft_reverse_rotate_a(stk_a);
+	ft_randinx(stk_a, stk_b);
 	ft_print_stack(stk_a);
 	ft_free_stack(stk_a);
-	ft_free_stack(stk_b);
+
 }

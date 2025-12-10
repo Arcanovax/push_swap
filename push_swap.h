@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/09 16:28:58 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 12:31:48 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	struct s_node	*head;
 	struct s_node	*tails;
+	int				size;
 }	t_stack;
 
 typedef struct s_node
@@ -40,6 +42,6 @@ int	ft_rotate_ab(t_stack *a, t_stack *b);
 int	ft_reverse_rotate_a(t_stack *a);
 int	ft_reverse_rotate_b(t_stack *b);
 int	ft_reverse_rotate_ab(t_stack *a, t_stack *b);
-int ft_randinx(t_stack *a);
+int	ft_randinx(t_stack *a, t_stack *b);
 
 #endif
