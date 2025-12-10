@@ -6,12 +6,84 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 14:43:40 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 14:50:46 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+int	ft_full_of_int(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!('0' <= str[i] && str[i] <= '9') && !(str[i] == ' ')
+			&& !(9 <= str[i] && str[i] <= 13))
+			return (0);
+	return (1);
+}
+
+int	ft_strlen_secure(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_cat_nb(char *base, char *cating)
+{
+	int		i;
+	char	*new_str;
+
+	if (ft_full_of_int(cating) == 0)
+		return (NULL);
+	new_str = malloc(sizeof(char) * (ft_strlen_secure(base)
+				+ ft_strlen_secure(cating) + 2));
+	if (!new_str)
+	{
+		free(base);
+		return (NULL);
+	}
+	i = 0;
+	while (base[i])
+	{
+		new_str[i] = base[i];
+		i++;
+	}
+	new_str[i++] = ' ';
+	while (*cating)
+		new_str[i++] = *cating++;
+	new_str[i] = '\0';
+	free(base);
+	return (new_str);
+}
+
+char *ft_alloc_str(char *str)
+{
+	char *new_str;
+	int i;
+
+	if (ft_full_of_int(str) == 0)
+		return (NULL);
+	new_str = malloc(sizeof(char) * ft_strlen_secure(str) + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		new_str[i] = str[i];
+		i++;
+	}
+	new_str[i] = '\0';
+	return (new_str);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -220,6 +292,7 @@ int	main(int argc, char **argv)
 	int			i;
 	int			flag;
 	t_stack		*stack;
+	char		*str;
 
 	i = 1;
 	if (argc <= 1)
@@ -231,11 +304,19 @@ int	main(int argc, char **argv)
 		printf("Error");
 		return (0);
 	}
-	if (!ft_split_node(stack, argv[1]))
+	str = ft_alloc_str(argv[i]);
+	while (str && ++i < argc)
+		str = ft_cat_nb(str, argv[i]);
+	if (!str)
+		{__builtin_printf("Error"); return (0);}
+	else
+		__builtin_printf("%s", str);
+	if (!ft_split_node(stack, str))
 	{
 		printf("Error");
 		return (0);
 	}
+	free(str);
 	if (flag == 1)
 		printf("simple\n");
 	printf("\nDisplay:\n");
