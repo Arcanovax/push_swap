@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 16:31:33 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 16:50:46 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,16 +286,16 @@ int	init_stack(t_stack **stack)
 	return (0);
 }
 
-void	handle_flag(int flag)
+void handle_flag(t_stack *a,t_stack *b, int flag)
 {
 	if (flag == 1)
-		printf("\nsimple");
+		ft_seletion(a,b);
 	else if (flag == 2)
 		printf("\nmedium");
 	else if (flag == 3)
 		printf("\ncomplex");
 	else if (flag == 4)
-		printf("\nadaptive");
+		ft_randinx(a,b);
 }
 
 int	ft_error(void)
@@ -346,7 +346,7 @@ int	main(int argc, char **argv)
 		return (ft_error());
 	if (!ft_split_node(a, str))
 		return (ft_error());
-	handle_flag(flag);
+	handle_flag(a,b,flag);
 	printf("\nDisplay:\n");
 	display_stack(a);
 	ft_free_all(str, a, b);

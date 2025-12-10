@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 16:31:45 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 16:42:13 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_seletion(t_stack *a, t_stack *b)
 	int j;
 	int size;
 
-	size = 6;
+	size = a->size;
 	j = 0;
 	while(j < size - 1)
 	{
