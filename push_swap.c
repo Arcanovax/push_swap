@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 17:17:23 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 17:20:26 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ int	get_flag(char *arg, int *i)
 	return (4);
 }
 
-void handle_flag(t_stack *a,t_stack *b, int flag)
+void	handle_flag(t_stack *a, t_stack *b, int flag)
 {
 	if (flag == 1)
-		ft_seletion(a,b);
+		ft_seletion(a, b);
 	else if (flag == 2)
 		printf("\nmedium");
 	else if (flag == 3)
 		printf("\ncomplex");
 	else if (flag == 4)
-		ft_randinx(a,b);
+		ft_randinx(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -99,10 +99,8 @@ int	main(int argc, char **argv)
 	str = ft_alloc_str(argv[i]);
 	while (str && ++i < argc)
 		str = ft_cat_nb(str, argv[i]);
-	if (!str)
+	if (!str || !ft_split_node(a, str))
 		return (ft_free_all_error());
-	if (!ft_split_node(a, str))
-		return (ft_free_all_error());
-	handle_flag(flag);
+	handle_flag(flag, a, b);
 	return (ft_free_exit(str, a, b));
 }

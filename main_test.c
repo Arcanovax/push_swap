@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:00:35 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 16:16:03 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 17:20:55 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	ft_print_stack(t_stack *stk)
 	}
 }
 
+/*
 static void	ft_free_stack(t_stack *stk)
 {
 	t_node	*node;
@@ -111,4 +112,4 @@ int	main(void)
 	ft_randinx(stk_a, stk_b);
 	ft_print_stack(stk_a);
 	ft_free_stack(stk_a);
-}
+*/
