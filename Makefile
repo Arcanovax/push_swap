@@ -1,18 +1,15 @@
 NAME = push_swap
-
+CC = cc
 SRCS = \
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 DEPS = $(patsubst %.c, %.d, $(SRCS))
 
-CFLAGS += -Werror -Wextra -Wall
-CPPFLAGS += -MMD -MP
+CFLAGS += -Werror -Wextra -Wall -MMD -MP
 
-.PHONY: all clean fclean re
+all: $(NAME) 
 
-all: $(NAME)
-
-$(NAME): $(OBJS) $(DEPS)
+$(NAME): $(OBJS) $(DEPS) Makefile
 	$(CC) $^ -o $@ -c
 
 clean:
@@ -24,3 +21,5 @@ fclean: clean
 re: fclean all
 
 -include $(DEPS)
+
+.PHONY: all clean fclean re
