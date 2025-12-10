@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 14:58:33 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 15:06:53 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ int	add_node(t_stack *stack, int nb)
 		return (0);
 	new->value = nb;
 	new->next = NULL;
+	// new->size++;
 	if (stack->tails)
 	{
 		last = stack->tails;
