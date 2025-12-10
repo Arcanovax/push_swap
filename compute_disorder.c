@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:01:04 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 15:37:13 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 15:38:46 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ double	compute_disorder(t_stack *stack)
 	}
 	return ((double)mistakes / (double)total_pairs);
 }
+
