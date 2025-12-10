@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/09 11:51:55 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 16:16:24 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_rotate(t_stack *stack)
 {
 	t_node	*head;
 	t_node	*tails;
-	
+
 	if (!stack || !stack->head || !stack->tails)
 		return (-1);
 	head = stack->head;

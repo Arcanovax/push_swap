@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 15:54:24 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 16:15:50 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_randinx(t_stack *a, t_stack *b)
 {
-	int size;
-	int bit;
+	int	size;
+	int	bit;
 
 	bit = 0;
 	while (bit < 32)

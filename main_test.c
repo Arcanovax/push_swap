@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:00:35 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 12:36:31 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/10 16:16:03 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 
 static void	ft_print_stack(t_stack *stk)
 {
-	t_node *node = stk->head;
-	__builtin_printf("stack\nhead: % 2d|%p\ntails:%2d|%p\nsize:%3d|\n", stk->head->value, stk->head, stk->tails->value, stk->tails, stk->size);
-	while (node) {
-		__builtin_printf("prev:%10p|node_a:%2d|%p|next:%-10p\n",node->prev, node->value, node, node->next);
+	t_node	*node;
+
+	node = stk->head;
+	__builtin_printf("stack\nhead: % 2d|%p\ntails:%2d|%p\nsize:%3d|\n",
+		stk->head->value, stk->head, stk->tails->value, stk->tails, stk->size);
+	while (node)
+	{
+		__builtin_printf("prev:%10p|node_a:%2d|%p|next:%-10p\n", node->prev,
+			node->value, node, node->next);
 		node = node->next;
 	}
 }
 
-static void ft_free_stack(t_stack *stk)
+static void	ft_free_stack(t_stack *stk)
 {
-	t_node *node = stk->head;
-	t_node *next;
-	
+	t_node	*node;
+	t_node	*next;
+
+	node = stk->head;
 	while (node)
 	{
 		next = node->next;
@@ -60,7 +66,7 @@ int	main(void)
 	stk_a->head = a1;
 	stk_a->tails = a4;
 	stk_a->size = 4;
-	
+
 	// t_node *b1 = malloc(sizeof(t_node));
 	// t_node *b2 = malloc(sizeof(t_node));
 	// t_node *b3 = malloc(sizeof(t_node));
@@ -80,30 +86,29 @@ int	main(void)
 	// b4->value = 8;
 	// b4->next = NULL;
 
-	stk_b->head =  NULL;
+	stk_b->head = NULL;
 	stk_b->tails = NULL;
-	stk_b->size =  0;
+	stk_b->size = 0;
 
 	// // test_ft_swap()
 	// ft_print_stack(stk_a);
 	// ft_swap_a(stk_a);
 	// ft_print_stack(stk_a);
-	
+
 	// // test ft_push()
 	// ft_print_stack(stk_a); ft_print_stack(stk_b);
 	// ft_push_a(stk_a, stk_b);
 	// ft_print_stack(stk_a); ft_print_stack(stk_b);
-	
+
 	// // test ft_reverse_rotate() and / or ft_rotate()
 	// ft_print_stack(stk_a);
 	// ft_rotate_a(stk_a);
 	// ft_reverse_rotate_a(stk_a);
 	// ft_print_stack(stk_a);
 	// ft_free_stack(stk_a);
-	
+
 	ft_print_stack(stk_a);
 	ft_randinx(stk_a, stk_b);
 	ft_print_stack(stk_a);
 	ft_free_stack(stk_a);
-
 }
