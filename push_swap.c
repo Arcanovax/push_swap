@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 15:06:53 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/10 15:25:54 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,7 +272,7 @@ int	get_flag(char *arg, int *i)
 		*i += 1;
 		return (4);
 	}
-	return (0);
+	return (4);
 }
 
 t_stack	*init_stack(void)
@@ -286,6 +286,18 @@ t_stack	*init_stack(void)
 	stack->tails = NULL;
 	// stack->size = 0;
 	return (stack);
+}
+
+void handle_flag(t_stack *stack, int flag)
+{
+	if (flag == 1)
+		printf("\nsimple");
+	else if (flag == 2)
+		printf("\nmedium");
+	else if (flag == 3)
+		printf("\ncomplex");
+	else if (flag == 4)
+		printf("\nadaptive");
 }
 
 int	main(int argc, char **argv)
@@ -318,8 +330,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	free(str);
-	if (flag == 1)
-		printf("simple\n");
+	handle_flag(stack, flag);
 	printf("\nDisplay:\n");
 	display_stack(stack);
 }
