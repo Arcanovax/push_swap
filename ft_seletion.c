@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_seletion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 10:29:17 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/11 18:00:25 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_get_imin(t_stack *a, int size, int j, int min)
 			min = a->head->value;
 			imin = i;
 		}
-		ft_rotate_a(a);
+		ft_rotate_a(a, NULL);
 		i++;
 	}
 	return (imin);
@@ -40,10 +40,10 @@ void	ft_push_min(t_stack *a, t_stack *b, int imin)
 	i = 0;
 	while (i < imin)
 	{
-		ft_rotate_a(a);
+		ft_rotate_a(a, NULL);
 		i++;
 	}
-	ft_push_b(a, b);
+	ft_push_b(a, b, NULL);
 }
 
 void	ft_push_all(t_stack *a, t_stack *b, int size)
@@ -53,7 +53,7 @@ void	ft_push_all(t_stack *a, t_stack *b, int size)
 	j = 0;
 	while (j < size - 1)
 	{
-		ft_push_a(a, b);
+		ft_push_a(a, b, NULL);
 		j++;
 	}
 }

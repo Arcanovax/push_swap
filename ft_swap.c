@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 12:26:58 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 17:46:26 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,29 @@ static int	ft_swap(t_stack *stack)
 	return (0);
 }
 
-int	ft_swap_a(t_stack *a)
+int	ft_swap_a(t_stack *a, t_log *log)
 {
 	if (ft_swap(a) == -1)
-		return (0);
+		return (-1);
+	if (log)
+			log->sa += 1;
 	if (write(1, "sa\n", 3) >= 0)
 		return (0);
 	return (-1);
 }
 
-int	ft_swap_b(t_stack *b)
+int	ft_swap_b(t_stack *b, t_log *log)
 {
 	if (ft_swap(b) == -1)
-		return (0);
+		return (-1);
+	if (log)
+		log->sb += 1;
 	if (write(1, "sb\n", 3) >= 0)
 		return (0);
 	return (-1);
 }
 
-int	ft_swap_ab(t_stack *a, t_stack *b)
+int	ft_swap_ab(t_stack *a, t_stack *b, t_log *log)
 {
 	int	res_a;
 	int	res_b;
@@ -50,7 +54,10 @@ int	ft_swap_ab(t_stack *a, t_stack *b)
 	res_a = ft_swap(a);
 	res_b = ft_swap(b);
 	if (res_a == 0 && res_b == 0)
+	{	
+		log->ss += 1;
 		return (write(1, "ss\n", 3));
+	}
 	else if (res_a == 0)
 		return (write(1, "sa\n", 3) >= 0);
 	else if (res_b == 0)

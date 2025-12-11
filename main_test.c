@@ -6,13 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:00:35 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 17:20:55 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 16:12:13 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_print_stack(t_stack *stk)
+void	ft_print_stack(t_stack *stk)
 {
 	t_node	*node;
 
@@ -113,3 +113,63 @@ int	main(void)
 	ft_print_stack(stk_a);
 	ft_free_stack(stk_a);
 */
+
+
+// proto test no i in main :
+
+// int	get_flag(char ***arg)
+// {
+// 	if (ft_strcmp(**arg, "--simple") == 0)
+// 	{
+// 		++(*arg);
+// 		return (1);
+// 	}
+// 	else if (ft_strcmp(**arg, "--medium") == 0)
+// 	{
+// 		++(*arg);
+// 		return (2);
+// 	}
+// 	else if (ft_strcmp(**arg, "--complex") == 0)
+// 	{
+// 		++(*arg);
+// 		return (3);
+// 	}
+// 	else if (ft_strcmp(**arg, "--adaptive") == 0)
+// 	{
+// 		++(*arg);
+// 		return (4);
+// 	}
+// 	return (4);
+// }
+
+
+// int	main(int argc, char **argv)
+// {
+// 	int		flag;
+// 	t_stack	*a;
+// 	t_stack	*b;
+// 	char	*str;
+
+// 	++(argv);
+// 	if (--argc <= 0)
+// 		return (write(1, "put arg", 7));
+// 	flag = get_flag(&argv);
+// 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
+// 		return (ft_free_all_on_error(NULL, a, NULL));
+// 	if (*argv)
+// 		str = ft_alloc_str(*argv);
+// 	++argv;
+// 	while (str && (*argv)) {
+// 		str = ft_cat_nb(str, *argv);
+// 		(++argv);
+// 	}
+// 	if (!str || !ft_split_node(a, str))
+// 		return (ft_free_all_on_error(NULL, a, NULL));
+// 	handle_flag(a, b, flag);
+// 	// ft_print_stack(a);
+// 	// display_stack(a);
+	
+// 	// write(1, "\033[1;31m", 7);
+// 	// write(1, "Texte en rouge", 24);
+// 	// write(1, "\033[0m", 4);
+// 	return (ft_free_exit(str, a, b));

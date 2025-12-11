@@ -6,31 +6,53 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 16:15:50 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 18:01:27 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_randinx(t_stack *a, t_stack *b)
+static int	ft_randinx_next(t_stack *a, t_stack *b, int bits, t_log *log)
 {
-	int	size;
 	int	bit;
+	int size;
+	int mask;
 
 	bit = 0;
-	while (bit < 32)
+	while (bit < bits)
 	{
+		mask = 1 << bit;
 		size = a->size;
 		while (size--)
 		{
-			if (((a->head->value - INT_MIN) >> bit) & 1)
-				ft_push_b(a, b);
+			if (((a->head->value - INT_MIN) & mask))
+				ft_rotate_a(a, log);
 			else
-				ft_rotate_a(a);
+				ft_push_b(a, b, log);
 		}
 		while (b->head)
-			ft_push_a(a, b);
+			ft_push_a(a, b, log);
 		bit++;
 	}
 	return (0);
+}
+
+
+int	ft_randinx(t_stack *a, t_stack *b, t_log *log)
+{
+	int max;
+	t_node *node;
+	
+	max = a->head->value;
+	node = a->head;
+	while (node)
+	{
+		if (node->value > max)
+			max = node->value;
+		node = node->next;
+	}
+	int bits = 0;
+	while (max >> bits != 0)
+		bits++;
+	return ft_randinx_next(a, b, bits, log);
 }

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/10 17:12:32 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 12:42:57 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,28 @@ static int	add_node(t_stack *stack, int nb)
 	return (1);
 }
 
-static int	ft_split_size_allocate(const char *s, char c)
-{
-	size_t	i;
-	size_t	size;
-	int		in_sep;
+// static int	ft_split_size_allocate(const char *s, char c)
+// {
+// 	size_t	i;
+// 	size_t	size;
+// 	int		in_sep;
 
-	in_sep = 1;
-	i = 0;
-	size = 0;
-	while (s[i])
-	{
-		if (in_sep == 1 && s[i] != c)
-		{
-			size++;
-			in_sep = 0;
-		}
-		else if (in_sep == 0 && s[i] == c)
-			in_sep = 1;
-		i++;
-	}
-	return (size + 1);
-}
+// 	in_sep = 1;
+// 	i = 0;
+// 	size = 0;
+// 	while (s[i])
+// 	{
+// 		if (in_sep == 1 && s[i] != c)
+// 		{
+// 			size++;
+// 			in_sep = 0;
+// 		}
+// 		else if (in_sep == 0 && s[i] == c)
+// 			in_sep = 1;
+// 		i++;
+// 	}
+// 	return (size + 1);
+// }
 
 static int	ft_split_add(char **split, size_t *i, const char *str, char sep)
 {
