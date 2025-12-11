@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 10:08:21 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/11 10:12:08 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	display_stack(t_stack *stack)
 {
 	t_node	*node;
 
+	printf("\n");
 	if (!stack || !stack->head)
 		return ;
 	node = stack->head;
@@ -102,5 +103,6 @@ int	main(int argc, char **argv)
 	if (!str || !ft_split_node(a, str))
 		return (ft_free_all_on_error(NULL, a, NULL));
 	handle_flag(a, b, flag);
+	display_stack(a);
 	return (ft_free_exit(str, a, b));
 }
