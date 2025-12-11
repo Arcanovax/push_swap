@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_seletion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 17:14:19 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 10:01:47 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,13 @@ int	ft_seletion(t_stack *a, t_stack *b)
 	}
 	return (0);
 }
+
+// ft_rotate_to_min(t_stack *a, int min)
+// {
+// 	while (i < imin)
+// 		{
+// 			ft_rotate_a(a);
+// 			i++;
+// 		}
+// 		ft_push_b(a, b);
+// }

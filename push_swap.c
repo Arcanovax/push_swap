@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 17:20:26 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 10:08:21 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,12 @@ int	main(int argc, char **argv)
 		return (0);
 	flag = get_flag(argv[1], &i);
 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
-		return (ft_free_all_error(NULL, a, NULL));
+		return (ft_free_all_on_error(NULL, a, NULL));
 	str = ft_alloc_str(argv[i]);
 	while (str && ++i < argc)
 		str = ft_cat_nb(str, argv[i]);
 	if (!str || !ft_split_node(a, str))
-		return (ft_free_all_error());
-	handle_flag(flag, a, b);
+		return (ft_free_all_on_error(NULL, a, NULL));
+	handle_flag(a, b, flag);
 	return (ft_free_exit(str, a, b));
 }

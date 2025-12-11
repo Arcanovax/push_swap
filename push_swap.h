@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/10 17:17:46 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 10:07:49 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_reverse_rotate_a(t_stack *a);
 int		ft_reverse_rotate_b(t_stack *b);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b);
 int		ft_randinx(t_stack *a, t_stack *b);
+int		ft_seletion(t_stack *a, t_stack *b);
 int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
 int		ft_free_exit(char *str, t_stack *a, t_stack *b);
 int		ft_split_node(t_stack *stack, char const *s);
