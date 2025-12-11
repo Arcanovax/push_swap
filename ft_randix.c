@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 18:01:27 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:55:24 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	ft_randinx_next(t_stack *a, t_stack *b, int bits, t_log *log)
 {
 	int	bit;
-	int size;
-	int mask;
+	int	size;
+	int	mask;
 
 	bit = 0;
 	while (bit < bits)
@@ -37,12 +37,12 @@ static int	ft_randinx_next(t_stack *a, t_stack *b, int bits, t_log *log)
 	return (0);
 }
 
-
 int	ft_randinx(t_stack *a, t_stack *b, t_log *log)
 {
-	int max;
-	t_node *node;
-	
+	int		max;
+	t_node	*node;
+	int		bits;
+
 	max = a->head->value;
 	node = a->head;
 	while (node)
@@ -51,8 +51,8 @@ int	ft_randinx(t_stack *a, t_stack *b, t_log *log)
 			max = node->value;
 		node = node->next;
 	}
-	int bits = 0;
+	bits = 0;
 	while (max >> bits != 0)
 		bits++;
-	return ft_randinx_next(a, b, bits, log);
+	return (ft_randinx_next(a, b, bits, log));
 }

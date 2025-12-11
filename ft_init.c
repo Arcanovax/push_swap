@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:05:04 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 17:39:12 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:56:05 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_init_log(t_log **log)
 	*log = malloc(sizeof(t_log));
 	if (!(*log))
 		return (-1);
-	(*log)->sa = 0; 
+	(*log)->sa = 0;
 	(*log)->sb = 0;
 	(*log)->ss = 0;
 	(*log)->pa = 0;

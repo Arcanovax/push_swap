@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 19:23:33 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:51:01 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_reverse_rotate_a(t_stack *a, t_log *log);
 int		ft_reverse_rotate_b(t_stack *b, t_log *log);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log);
 int		ft_randinx(t_stack *a, t_stack *b, t_log *log);
-int		ft_seletion(t_stack *a, t_stack *b);
+int		ft_seletion(t_stack *a, t_stack *b, t_log *log);
 int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
 int		ft_free_exit(char *str, t_stack *a, t_stack *b);
 int		ft_split_node(t_stack *stack, char const *s);

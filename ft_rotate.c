@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 18:01:08 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:54:54 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_rotate_ab(t_stack *a, t_stack *b, t_log *log)
 	res_a = ft_rotate(a);
 	res_b = ft_rotate(b);
 	if (res_a == 0 && res_b == 0)
-	{	
+	{
 		if (log)
 			log->rr += 1;
 		return (write(1, "rr\n", 3));

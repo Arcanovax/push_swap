@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 19:39:34 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:55:35 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void	ft_putdouble_color(double x)
 	write(1, "\033[0m", 4); // reset couleur
 	write(1, "\n", 1);
 }
-static int ft_print_strategy(flag)
+static int	ft_print_strategy(flag)
 {
 	write(1, "[bench] strategy: ", 19);
 	if (flag % 4 == 0)
@@ -115,7 +115,7 @@ static int ft_print_strategy(flag)
 	return (0);
 }
 
-int ft_print_bench(double cp_disorder, int flag, t_log *log)
+int	ft_print_bench(double cp_disorder, int flag, t_log *log)
 {
 	ft_putdouble_color(cp_disorder);
 	write(1, "\033[38;2;0;0;255m", 16);

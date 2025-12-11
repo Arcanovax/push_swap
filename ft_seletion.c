@@ -6,14 +6,14 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 18:00:25 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:51:58 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	ft_get_imin(t_stack *a, int size, int j, int min)
+int	ft_get_imin(t_stack *a, int size, int j, int min, t_log *log)
 {
 	int	i;
 	int	imin;
@@ -27,38 +27,38 @@ int	ft_get_imin(t_stack *a, int size, int j, int min)
 			min = a->head->value;
 			imin = i;
 		}
-		ft_rotate_a(a, NULL);
+		ft_rotate_a(a, log);
 		i++;
 	}
 	return (imin);
 }
 
-void	ft_push_min(t_stack *a, t_stack *b, int imin)
+void	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 {
 	int	i;
 
 	i = 0;
 	while (i < imin)
 	{
-		ft_rotate_a(a, NULL);
+		ft_rotate_a(a, log);
 		i++;
 	}
-	ft_push_b(a, b, NULL);
+	ft_push_b(a, b, log);
 }
 
-void	ft_push_all(t_stack *a, t_stack *b, int size)
+void	ft_push_all(t_stack *a, t_stack *b, int size, t_log *log)
 {
 	int	j;
 
 	j = 0;
 	while (j < size - 1)
 	{
-		ft_push_a(a, b, NULL);
+		ft_push_a(a, b, log);
 		j++;
 	}
 }
 
-int	ft_seletion(t_stack *a, t_stack *b)
+int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 {
 	int	imin;
 	int	min;
@@ -70,10 +70,10 @@ int	ft_seletion(t_stack *a, t_stack *b)
 	while (j < size - 1)
 	{
 		min = a->head->value;
-		imin = ft_get_imin(a, size, j, min);
-		ft_push_min(a, b, imin);
+		imin = ft_get_imin(a, size, j, min, log);
+		ft_push_min(a, b, imin, log);
 		j++;
 	}
-	ft_push_all(a, b, size);
+	ft_push_all(a, b, size, log);
 	return (0);
 }

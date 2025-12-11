@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 19:23:45 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:53:24 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	display_stack(t_stack *stack)
 		node = node->next;
 	}
 }
+
 int	ft_set_flag(int *flag, int n)
 {
 	*flag += n;
@@ -52,7 +53,6 @@ int	ft_set_flag(int *flag, int n)
 		*flag += 8;
 	return (1);
 }
-
 
 int	get_flag(char *arg, int *flag)
 {
@@ -74,17 +74,20 @@ void	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 	if (flag % 4 == 0)
 		ft_randinx(a, b, log);
 	else if (flag % 4 == 1)
-		ft_seletion(a, b);
+		ft_seletion(a, b, log);
 	else if (flag % 4 == 2)
-		printf("\nmedium");
+		(void)0;
+	// {printf("\nmedium");}
 	else if (flag % 4 == 3)
-		printf("\ncomplex");
+		(void)0;
+	// printf("\ncomplex");
 }
-int ft_bench_mode(t_stack *a, t_stack *b, int flag)
+
+int	ft_bench_mode(t_stack *a, t_stack *b, int flag)
 {
-	double cp_disorder;
-	t_log *log;
-	
+	double	cp_disorder;
+	t_log	*log;
+
 	if (ft_init_log(&log) == -1)
 		return (-1);
 	cp_disorder = compute_disorder(a);
@@ -93,7 +96,6 @@ int ft_bench_mode(t_stack *a, t_stack *b, int flag)
 	free(log);
 	return (0);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -125,7 +127,7 @@ int	main(int argc, char **argv)
 		if (ft_bench_mode(a, b, flag) == -1)
 			return (ft_free_all_on_error(str, a, b));
 	}
-	else	
+	else
 		handle_flag(a, b, flag, NULL);
 	// ft_print_stack(a);
 	// display_stack(a);

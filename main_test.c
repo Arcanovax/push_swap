@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:00:35 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 16:12:13 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:54:08 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int	main(void)
 	ft_free_stack(stk_a);
 */
 
-
 // proto test no i in main :
 
 // int	get_flag(char ***arg)
@@ -142,7 +141,6 @@ int	main(void)
 // 	return (4);
 // }
 
-
 // int	main(int argc, char **argv)
 // {
 // 	int		flag;
@@ -168,7 +166,7 @@ int	main(void)
 // 	handle_flag(a, b, flag);
 // 	// ft_print_stack(a);
 // 	// display_stack(a);
-	
+
 // 	// write(1, "\033[1;31m", 7);
 // 	// write(1, "Texte en rouge", 24);
 // 	// write(1, "\033[0m", 4);

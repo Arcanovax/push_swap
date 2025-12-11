@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 17:46:26 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/11 20:54:22 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_swap_a(t_stack *a, t_log *log)
 	if (ft_swap(a) == -1)
 		return (-1);
 	if (log)
-			log->sa += 1;
+		log->sa += 1;
 	if (write(1, "sa\n", 3) >= 0)
 		return (0);
 	return (-1);
@@ -54,7 +54,7 @@ int	ft_swap_ab(t_stack *a, t_stack *b, t_log *log)
 	res_a = ft_swap(a);
 	res_b = ft_swap(b);
 	if (res_a == 0 && res_b == 0)
-	{	
+	{
 		log->ss += 1;
 		return (write(1, "ss\n", 3));
 	}
