@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 20:53:24 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:16:31 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int	main(int argc, char **argv)
 	flag = 0;
 	while (i <= argc && get_flag(argv[i], &flag))
 		i++;
-	// __builtin_printf("(flag:%d)\n", flag);
 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
 		return (ft_free_all_on_error(NULL, a, NULL));
 	if (i < argc)
@@ -121,7 +120,6 @@ int	main(int argc, char **argv)
 		str = ft_cat_nb(str, argv[i++]);
 	if (!str || !ft_split_node(a, str))
 		return (ft_free_all_on_error(NULL, a, NULL));
-	// ft_print_stack(a);
 	if (flag & (1 << 2))
 	{
 		if (ft_bench_mode(a, b, flag) == -1)
@@ -131,8 +129,5 @@ int	main(int argc, char **argv)
 		handle_flag(a, b, flag, NULL);
 	// ft_print_stack(a);
 	// display_stack(a);
-	// write(1, "\033[1;31m", 7);
-	// write(1, "Texte en rouge", 24);
-	// write(1, "\033[0m", 4);
 	return (ft_free_exit(str, a, b));
 }
