@@ -6,14 +6,14 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:26:52 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 15:28:26 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	ft_get_imin(t_stack *a)
+int	ft_get_imin(t_stack *a, t_log *log)
 {
 	int	i;
 	int	imin;
@@ -48,16 +48,16 @@ void	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 	ft_push_b(a, b, log);
 }
 
-int	ft_seletion(t_stack *a, t_stack *b)
+int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 {
 	int	imin;
 
 	while (a->size > 0)
 	{
-		imin = ft_get_imin(a);
-		ft_push_min(a, b, imin);
+		imin = ft_get_imin(a, log);
+		ft_push_min(a, b, imin, log);
 	}
 	while (0 < b->size)
-		ft_push_a(a, b);
+		ft_push_a(a, b, log);
 	return (0);
 }

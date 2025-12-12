@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:26:23 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 15:33:37 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ char	*ft_cat_nb(char *base, char *cating);
 void	ft_print_stack(t_stack *stk);
 double	compute_disorder(t_stack *stack);
 int		ft_print_bench(double cp_disorder, int flag, t_log *log);
+int		ft_bucket(t_stack *a, t_stack *b, t_log *log);
 
 #endif

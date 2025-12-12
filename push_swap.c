@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:16:31 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:32:52 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ void	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 	else if (flag % 4 == 1)
 		ft_seletion(a, b, log);
 	else if (flag % 4 == 2)
-		(void)0;
-	// {printf("\nmedium");}
+		ft_bucket(a, b, log);
 	else if (flag % 4 == 3)
 		(void)0;
 	// printf("\ncomplex");
