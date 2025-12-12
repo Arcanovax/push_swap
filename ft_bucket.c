@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:54:48 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 17:06:07 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,49 @@ int	ft_sqrt(int nb)
 	return (x);
 }
 
-static void	get_min_max(t_stack *a, t_bucket *bucket, t_log *log)
+static void	get_min_max(t_stack *a, t_bucket *bucket)
 {
-	int	i;
-	int	min;
-	int	max;
+	t_node	*current_node;
+	int		min;
+	int		max;
 
-	i = 0;
+	current_node = a->head;
 	min = a->head->value;
 	max = a->head->value;
-	while (i < a->size)
+	while (current_node)
 	{
-		ft_rotate_a(a, log);
-		if (a->head->value < min)
-			min = a->head->value;
-		if (a->head->value > max)
-			max = a->head->value;
-		i++;
+		if (current_node->value < min)
+			min = current_node->value;
+		if (current_node->value > max)
+			max = current_node->value;
+		current_node = current_node->next;
 	}
 	bucket->min = min;
 	bucket->max = max;
 }
 
-static void	ft_go_top(t_stack *b, int i, t_log *log)
+static int	get_bucket_imax(t_stack *b, int range_min)
 {
-	while (i != 0)
+	t_node	*current_node;
+	int		imax;
+	int		max;
+	int		i;
+
+	i = 0;
+	current_node = b->head;
+	max = current_node->value;
+	imax = 0;
+	while (current_node && current_node->value >= range_min && i < b->size)
 	{
-		ft_reverse_rotate_b(b, log);
-		i--;
+		if (current_node->value >= max)
+		{
+			max = current_node->value;
+			imax = i;
+		}
+		current_node = current_node->next;
+		i++;
 	}
+	return (imax);
 }
 
 static void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
@@ -64,23 +78,18 @@ static void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
 
 	max = b->head->value;
 	i = 0;
-	while (b->head->value >= range_min && i < b->size)
+	imax = get_bucket_imax(b, range_min);
+	while (i != imax)
 	{
-		if (b->head->value >= max)
-		{
-			max = b->head->value;
-			imax = i;
-		}
 		ft_rotate_b(b, log);
 		i++;
 	}
-	while (i != imax)
+	ft_push_a(a, b, log);
+	while (i != 0)
 	{
 		ft_reverse_rotate_b(b, log);
 		i--;
 	}
-	ft_push_a(a, b, log);
-	ft_go_top(b, i, log);
 }
 
 static void	ft_push_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
@@ -128,7 +137,7 @@ int	ft_bucket(t_stack *a, t_stack *b, t_log *log)
 	int			j;
 
 	bucket.nb = ft_sqrt(a->size);
-	get_min_max(a, &bucket, log);
+	get_min_max(a, &bucket);
 	bucket.size = (bucket.max - bucket.min + 1) / bucket.nb;
 	i = create_bucket(a, b, &bucket, log);
 	while (i >= 0)
