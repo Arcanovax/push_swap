@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:40:34 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 15:54:48 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	get_min_max(t_stack *a, t_bucket *bucket, t_log *log)
 	bucket->max = max;
 }
 
-static void	ft_go_top(t_stack *a, t_stack *b, int i, t_log *log)
+static void	ft_go_top(t_stack *b, int i, t_log *log)
 {
 	while (i != 0)
 	{
@@ -80,7 +80,7 @@ static void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
 		i--;
 	}
 	ft_push_a(a, b, log);
-	ft_go_top(a, b, i, log);
+	ft_go_top(b, i, log);
 }
 
 static void	ft_push_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
@@ -105,7 +105,6 @@ static void	ft_push_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 static int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (i < bucket->nb)
