@@ -6,30 +6,32 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:28:26 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 17:32:59 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	ft_get_imin(t_stack *a, t_log *log)
+static int	ft_get_imin(t_stack *a)
 {
-	int	i;
-	int	imin;
-	int	min;
+	t_node	*current_node;
+	int		i;
+	int		imin;
+	int		min;
 
-	min = a->head->value;
 	imin = 0;
 	i = 0;
-	while (i < a->size)
+	current_node = a->head;
+	min = current_node->value;
+	while (current_node && i < a->size)
 	{
-		if (a->head->value < min)
+		if (current_node->value < min)
 		{
-			min = a->head->value;
+			min = current_node->value;
 			imin = i;
 		}
-		ft_rotate_a(a, log);
+		current_node = current_node->next;
 		i++;
 	}
 	return (imin);
@@ -40,10 +42,21 @@ void	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 	int	i;
 
 	i = 0;
-	while (i < imin)
+	if (imin <= a->size / 2)
 	{
-		ft_rotate_a(a, log);
-		i++;
+		while (i < imin)
+		{
+			ft_rotate_a(a, log);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < a->size - imin)
+		{
+			ft_reverse_rotate_a(a, log);
+			i++;
+		}
 	}
 	ft_push_b(a, b, log);
 }
@@ -54,7 +67,7 @@ int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 
 	while (a->size > 0)
 	{
-		imin = ft_get_imin(a, log);
+		imin = ft_get_imin(a);
 		ft_push_min(a, b, imin, log);
 	}
 	while (0 < b->size)
