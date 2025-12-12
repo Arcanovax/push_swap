@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 12:10:02 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/12 15:26:23 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_bucket
+{
+	int	min;
+	int	max;
+	int	nb;
+	int	size;
+	int	range_min;
+	int	range_max;
+}					t_bucket;
 
 typedef struct s_stack
 {
