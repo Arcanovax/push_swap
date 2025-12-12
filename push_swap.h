@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 10:07:49 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 14:44:47 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_bucket
+{
+	int	min;
+	int	max;
+	int	nb;
+	int	size;
+	int	range_min;
+	int	range_max;
+}					t_bucket;
 
 typedef struct s_stack
 {
@@ -44,10 +54,12 @@ int		ft_reverse_rotate_b(t_stack *b);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b);
 int		ft_randinx(t_stack *a, t_stack *b);
 int		ft_seletion(t_stack *a, t_stack *b);
+int		ft_bucket(t_stack *a, t_stack *b);
 int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
 int		ft_free_exit(char *str, t_stack *a, t_stack *b);
 int		ft_split_node(t_stack *stack, char const *s);
 int		init_stack(t_stack **stack);
 char	*ft_alloc_str(char *str);
 char	*ft_cat_nb(char *base, char *cating);
+void	display_stack(t_stack *stack);
 #endif

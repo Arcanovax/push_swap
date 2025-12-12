@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 13:50:53 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 14:57:25 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,30 @@ int	ft_sqrt(int nb)
 	return (x);
 }
 
-void	get_min_max(t_stack *a, int *min, int *max)
+void	get_min_max(t_stack *a, t_bucket *bucket)
 {
 	int	i;
+	int	min;
+	int	max;
 
 	i = 0;
-	*min = a->head->value;
-	*max = a->head->value;
+	min = a->head->value;
+	max = a->head->value;
 	while (i < a->size)
 	{
 		ft_rotate_a(a);
-		if (a->head->value < *min)
-			*min = a->head->value;
-		if (a->head->value > *max)
-			*max = a->head->value;
+		if (a->head->value < min)
+			min = a->head->value;
+		if (a->head->value > max)
+			max = a->head->value;
 		i++;
 	}
+	bucket->min = min;
+	bucket->max = max;
 }
 
-void	ft_push_imax(t_stack *a, t_stack *b, int i, int imax)
+void	ft_go_top(t_stack *a, t_stack *b, int i)
 {
-	while (i != imax)
-	{
-		ft_reverse_rotate_b(b);
-		i--;
-	}
-	ft_push_a(a, b);
 	while (i != 0)
 	{
 		ft_reverse_rotate_b(b);
@@ -58,7 +56,7 @@ void	ft_push_imax(t_stack *a, t_stack *b, int i, int imax)
 	}
 }
 
-void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, int range_max)
+void	ft_push_max_range(t_stack *a, t_stack *b, int range_min)
 {
 	int	i;
 	int	max;
@@ -76,63 +74,77 @@ void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, int range_max)
 		ft_rotate_b(b);
 		i++;
 	}
-	ft_push_imax(a, b, i, imax);
+	while (i != imax)
+	{
+		ft_reverse_rotate_b(b);
+		i--;
+	}
+	ft_push_a(a, b);
+	ft_go_top(a, b, i);
 }
 
-
-int	ft_bucket(t_stack *a, t_stack *b)
+void	ft_push_current_bucket(t_stack *a, t_stack *b, t_bucket *bucket)
 {
-	int	min;
-	int	max;
-	int	nb_bucket;
-	int bucket_size;
-	int range_min;//
-	int range_max;//
-	int i;
-	int j;//
+	int	j;
+	int	top_a;
+
+	j = 0;
+	while (j < a->size + b->size)
+	{
+		if (!a->head)
+			break ;
+		top_a = a->head->value;
+		if (top_a >= bucket->range_min && top_a <= bucket->range_max)
+			ft_push_b(a, b);
+		else
+			ft_rotate_a(a);
+		j++;
+	}
+}
+
+int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket)
+{
+	int	i;
+	int	j;
 
 	i = 0;
-	j = 0;
-	nb_bucket = ft_sqrt(a->size);
-	get_min_max(a, &min, &max);
-	bucket_size = (max - min + 1) / nb_bucket;
-	//create_bucket(t_stack *a, t_stack *b, int min, int max)
-	while (i < nb_bucket)
+	while (i < bucket->nb)
 	{
-		j = 0;
-		range_min = min + i * bucket_size;
-		if (i == nb_bucket - 1)
-			range_max = max;
+		bucket->range_min = bucket->min + i * bucket->size;
+		if (i == bucket->nb - 1)
+			bucket->range_max = bucket->max;
 		else
-			range_max = range_min + bucket_size - 1;
-		printf("Bucket %d : [%d .. %d]\n", i + 1, range_min, range_max);
-		while(j < a->size + b->size)
-		{
-			if (!a->head)
-				break;
-			if (a->head->value >= range_min && a->head->value <= range_max)
-				ft_push_b(a,b);
-			else
-				ft_rotate_a(a);
-			j++;
-		}
+			bucket->range_max = bucket->range_min + bucket->size - 1;
+		ft_push_current_bucket(a, b, bucket);
 		i++;
 	}
 	i--;
+	return (i);
+}
+
+int	ft_bucket(t_stack *a, t_stack *b)
+{
+	t_bucket	bucket;
+	int			i;
+	int			j;
+
+	bucket.nb = ft_sqrt(a->size);
+	get_min_max(a, &bucket);
+	bucket.size = (bucket.max - bucket.min + 1) / bucket.nb;
+	i = create_bucket(a, b, &bucket);
 	while (i >= 0)
 	{
 		j = 0;
-		range_min = min + i * bucket_size;
-		if (i == nb_bucket - 1)
-			range_max = max;
+		bucket.range_min = bucket.min + i * bucket.size;
+		if (i == bucket.nb - 1)
+			bucket.range_max = bucket.max;
 		else
-			range_max = range_min + bucket_size - 1;
-		printf("Bucket %d : [%d .. %d]\n", i + 1, range_min, range_max);
-		while(b->head && b->head->value >= range_min)
+			bucket.range_max = bucket.range_min + bucket.size - 1;
+		while (b->head && b->head->value >= bucket.range_min)
 		{
 			if (!b->head)
-				break;
-			ft_push_max_range(a, b, range_min, range_max);
+				break ;
+			ft_push_max_range(a, b, bucket.range_min);
 		}
 		i--;
 	}
