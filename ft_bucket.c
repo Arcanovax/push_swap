@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:37:01 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 15:40:34 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_sqrt(int nb)
 	return (x);
 }
 
-void	get_min_max(t_stack *a, t_bucket *bucket, t_log *log)
+static void	get_min_max(t_stack *a, t_bucket *bucket, t_log *log)
 {
 	int	i;
 	int	min;
@@ -47,7 +47,7 @@ void	get_min_max(t_stack *a, t_bucket *bucket, t_log *log)
 	bucket->max = max;
 }
 
-void	ft_go_top(t_stack *a, t_stack *b, int i, t_log *log)
+static void	ft_go_top(t_stack *a, t_stack *b, int i, t_log *log)
 {
 	while (i != 0)
 	{
@@ -56,7 +56,7 @@ void	ft_go_top(t_stack *a, t_stack *b, int i, t_log *log)
 	}
 }
 
-void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
+static void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
 {
 	int	i;
 	int	max;
@@ -83,7 +83,7 @@ void	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
 	ft_go_top(a, b, i, log);
 }
 
-void	ft_push_current_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
+static void	ft_push_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	j;
 	int	top_a;
@@ -102,7 +102,7 @@ void	ft_push_current_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log
 	}
 }
 
-int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
+static int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
 	int	j;
@@ -115,7 +115,7 @@ int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 			bucket->range_max = bucket->max;
 		else
 			bucket->range_max = bucket->range_min + bucket->size - 1;
-		ft_push_current_bucket(a, b, bucket, log);
+		ft_push_bucket(a, b, bucket, log);
 		i++;
 	}
 	i--;
