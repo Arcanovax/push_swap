@@ -6,12 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:09:03 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:19:33 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	ft_get_imin(t_stack *a)
 {

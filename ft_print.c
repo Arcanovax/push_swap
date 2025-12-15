@@ -6,28 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 14:01:27 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:28:23 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_putnbr_fd(int n, int fd)
-{
-	char	c;
-
-	if (n == -INT_MIN)
-		return (write(fd, "-2147483647", 11));
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = -n;
-	}
-	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
-	c = '0' + (n % 10);
-	return (write(fd, &c, 1));
-}
 
 static void	ft_print_log(t_log *log, int fd)
 {
@@ -65,32 +48,6 @@ static int	ft_print_total_ops(t_log *log, int fd)
 	ft_putnbr_fd(total, fd);
 	write(fd, "\n", 1);
 	return (1);
-}
-
-static void	ft_putdouble_fd(double x, int precision, int fd)
-{
-	int		integer;
-	double	fraction;
-	int		digit;
-	char	c;
-	int		i;
-
-	integer = (int)x;
-	fraction = x - integer;
-	ft_putnbr_fd(integer, fd);
-	write(fd, ".", 1);
-	if (fraction < 0)
-		fraction = -fraction;
-	i = 0;
-	while (i < precision)
-	{
-		fraction *= 10;
-		digit = (int)fraction;
-		c = '0' + digit;
-		write(fd, &c, 1);
-		fraction -= digit;
-		i++;
-	}
 }
 
 static void	ft_putdouble_color_fd(double x, int fd)
@@ -132,10 +89,15 @@ static int	ft_print_strategy(int flag, int fd)
 
 int	ft_print_bench(double cp_disorder, int flag, t_log *log)
 {
-	int	fd;
+	int		fd;
+	char	*line;
 
+	line = "----------";
 	fd = 2;
-	write(fd, "----------PUSH SWAP / 42 Project By Mboutte and Mthetcha----------\n", 67);
+	write(fd, line, 10);
+	write(fd, "PUSH SWAP / 42 Project By Mboutte and Mthetcha", 46);
+	write(fd, line, 10);
+	write(1, "\n", 1);
 	write(fd, "\033[38;2;0;0;255m", 15);
 	write(fd, "Compute disorder : ", 19);
 	write(fd, "\033[0m", 4);
@@ -145,7 +107,8 @@ int	ft_print_bench(double cp_disorder, int flag, t_log *log)
 	ft_print_total_ops(log, fd);
 	ft_print_log(log, fd);
 	write(fd, "\033[0m\n", 5);
-	write(fd, "------------------------------------------------------------------\n", 67);
-
-	return (1);
+	write(fd, line, 10);
+	write(fd, line, 10);
+	write(fd, "----------------------------------------------\n", 47);
+	return (0);
 }

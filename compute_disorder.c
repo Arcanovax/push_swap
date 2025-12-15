@@ -6,11 +6,10 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:01:04 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 18:28:10 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:19:27 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
 double	compute_disorder(t_stack *stack)

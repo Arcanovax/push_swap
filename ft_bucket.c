@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 17:06:07 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/15 17:19:31 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ft_sqrt(int nb)
 {

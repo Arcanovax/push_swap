@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 20:54:22 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:24:08 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ int	ft_swap_a(t_stack *a, t_log *log)
 		return (-1);
 	if (log)
 		log->sa += 1;
-	if (write(1, "sa\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "sa\n", 3) >= 0);
 }
 
 int	ft_swap_b(t_stack *b, t_log *log)
@@ -41,9 +39,7 @@ int	ft_swap_b(t_stack *b, t_log *log)
 		return (-1);
 	if (log)
 		log->sb += 1;
-	if (write(1, "sb\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "sb\n", 3));
 }
 
 int	ft_swap_ab(t_stack *a, t_stack *b, t_log *log)
@@ -59,7 +55,7 @@ int	ft_swap_ab(t_stack *a, t_stack *b, t_log *log)
 		return (write(1, "ss\n", 3));
 	}
 	else if (res_a == 0)
-		return (write(1, "sa\n", 3) >= 0);
+		return (write(1, "sa\n", 3));
 	else if (res_b == 0)
 		return (write(1, "sb\n", 3));
 	return (0);

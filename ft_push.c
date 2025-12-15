@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:33:35 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/11 20:56:19 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:21:46 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ int	ft_push_a(t_stack *a, t_stack *b, t_log *log)
 		return (0);
 	if (log)
 		log->pa += 1;
-	if (write(1, "pa\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "pa\n", 3));
 }
 
 int	ft_push_b(t_stack *a, t_stack *b, t_log *log)
@@ -57,7 +55,5 @@ int	ft_push_b(t_stack *a, t_stack *b, t_log *log)
 		return (0);
 	if (log)
 		log->pb += 1;
-	if (write(1, "pb\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "pb\n", 3));
 }

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:39:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 20:54:54 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:23:35 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	ft_rotate_a(t_stack *a, t_log *log)
 		return (0);
 	if (log)
 		log->ra += 1;
-	if (write(1, "ra\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "ra\n", 3));
 }
 
 int	ft_rotate_b(t_stack *b, t_log *log)
@@ -49,9 +47,7 @@ int	ft_rotate_b(t_stack *b, t_log *log)
 		return (0);
 	if (log)
 		log->rb += 1;
-	if (write(1, "rb\n", 3) >= 0)
-		return (0);
-	return (-1);
+	return (write(1, "rb\n", 3));
 }
 
 int	ft_rotate_ab(t_stack *a, t_stack *b, t_log *log)
@@ -68,7 +64,7 @@ int	ft_rotate_ab(t_stack *a, t_stack *b, t_log *log)
 		return (write(1, "rr\n", 3));
 	}
 	else if (res_a == 0)
-		return (write(1, "ra\n", 3) >= 0);
+		return (write(1, "ra\n", 3));
 	else if (res_b == 0)
 		return (write(1, "rb\n", 3));
 	return (0);

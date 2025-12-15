@@ -6,14 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:02:30 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 17:29:35 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2)
+static int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
@@ -29,24 +28,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	display_stack(t_stack *stack)
-{
-	t_node	*node;
-
-	printf("\n");
-	if (!stack || !stack->head)
-		return ;
-	node = stack->head;
-	while (node)
-	{
-		printf("%d\n", node->value);
-		if (node == stack->tails)
-			return ;
-		node = node->next;
-	}
-}
-
-int	ft_set_flag(int *flag, int n)
+static int	ft_set_flag(int *flag, int n)
 {
 	*flag += n;
 	if (n < 4)
@@ -54,7 +36,7 @@ int	ft_set_flag(int *flag, int n)
 	return (1);
 }
 
-int	get_flag(char *arg, int *flag)
+static int	get_flag(char *arg, int *flag)
 {
 	if (ft_strcmp(arg, "--adaptive") == 0 && *flag < 8)
 		return (ft_set_flag(flag, 0));
@@ -69,7 +51,7 @@ int	get_flag(char *arg, int *flag)
 	return (0);
 }
 
-int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
+static int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 {
 	if (flag % 4 == 1)
 		return (ft_seletion(a, b, log));
@@ -84,17 +66,17 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 {
 	t_log	*log;
 	double	cp_disorder;
-	
+
 	log = NULL;
 	cp_disorder = compute_disorder(a);
 	if (flag & (1 << 2))
 		if (ft_init_log(&log) == -1)
 			return (-1);
 	if (handle_flag(a, b, flag, log) == -1)
-		{
-			free(log);
-			return (-1);
-		}
+	{
+		free(log);
+		return (-1);
+	}
 	if (flag & (1 << 2))
 		ft_print_bench(cp_disorder, flag, log);
 	if (log)
