@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/12 17:10:59 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 14:01:27 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ static int	ft_putnbr_fd(int n, int fd)
 
 static void	ft_print_log(t_log *log, int fd)
 {
-	write(fd, "[bench] pa: ", 12);
+	write(fd, "pa: ", 4);
 	ft_putnbr_fd(log->pa, fd);
 	write(fd, " pb: ", 5);
 	ft_putnbr_fd(log->pb, fd);
-	write(fd, "\n[bench] sa: ", 13);
+	write(fd, "\nsa: ", 5);
 	ft_putnbr_fd(log->sa, fd);
 	write(fd, " sb: ", 5);
 	ft_putnbr_fd(log->sb, fd);
 	write(fd, " ss: ", 5);
 	ft_putnbr_fd(log->ss, fd);
-	write(fd, "\n[bench] ra: ", 13);
+	write(fd, "\nra: ", 5);
 	ft_putnbr_fd(log->ra, fd);
 	write(fd, " rb: ", 5);
 	ft_putnbr_fd(log->rb, fd);
 	write(fd, " rr: ", 5);
 	ft_putnbr_fd(log->rr, fd);
-	write(fd, "\n[bench] rra: ", 14);
+	write(fd, "\nrra: ", 6);
 	ft_putnbr_fd(log->rra, fd);
 	write(fd, " rrb: ", 6);
 	ft_putnbr_fd(log->rrb, fd);
@@ -61,7 +61,7 @@ static int	ft_print_total_ops(t_log *log, int fd)
 
 	total = log->pa + log->pb + log->sa + log->sb + log->ss + log->ra + log->rb
 		+ log->rr + log->rra + log->rrb + log->rrr;
-	write(fd, "[bench] tatal ops: ", 19);
+	write(fd, "Tatal ops: ", 11);
 	ft_putnbr_fd(total, fd);
 	write(fd, "\n", 1);
 	return (1);
@@ -110,7 +110,6 @@ static void	ft_putdouble_color_fd(double x, int fd)
 	write(fd, ";", 1);
 	ft_putnbr_fd(b, fd);
 	write(fd, "m", 1);
-	write(fd, "[bench] ", 8);
 	ft_putdouble_fd(x, 2, fd);
 	write(fd, "%%", 1);
 	write(fd, "\033[0m", 4);
@@ -119,7 +118,7 @@ static void	ft_putdouble_color_fd(double x, int fd)
 
 static int	ft_print_strategy(int flag, int fd)
 {
-	write(fd, "[bench] strategy: ", 18);
+	write(fd, "Strategy: ", 10);
 	if (flag % 4 == 0)
 		write(fd, "Adaptive O(n log(n))\n", 21);
 	else if (flag % 4 == 1)
@@ -136,11 +135,17 @@ int	ft_print_bench(double cp_disorder, int flag, t_log *log)
 	int	fd;
 
 	fd = 2;
+	write(fd, "----------PUSH SWAP / 42 Project By Mboutte and Mthetcha----------\n", 67);
+	write(fd, "\033[38;2;0;0;255m", 15);
+	write(fd, "Compute disorder : ", 19);
+	write(fd, "\033[0m", 4);
 	ft_putdouble_color_fd(cp_disorder, fd);
 	write(fd, "\033[38;2;0;0;255m", 15);
 	ft_print_strategy(flag, fd);
 	ft_print_total_ops(log, fd);
 	ft_print_log(log, fd);
 	write(fd, "\033[0m\n", 5);
+	write(fd, "------------------------------------------------------------------\n", 67);
+
 	return (1);
 }

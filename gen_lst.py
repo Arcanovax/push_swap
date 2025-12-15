@@ -7,4 +7,4 @@ def gen_lst(nb_value=500, mini=0, maxi=9999):
 		lst.add(str(randint(mini, maxi)))
 	return " ".join(lst)
 
-print(gen_lst(500, 0, 9999))
+print(gen_lst(100, 0, 9999))
