@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/12 15:15:29 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/12 17:10:59 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	ft_print_log(t_log *log, int fd)
 	write(fd, " rr: ", 5);
 	ft_putnbr_fd(log->rr, fd);
 	write(fd, "\n[bench] rra: ", 14);
-	ft_putnbr_fd(log->rr, fd);
+	ft_putnbr_fd(log->rra, fd);
 	write(fd, " rrb: ", 6);
-	ft_putnbr_fd(log->rr, fd);
+	ft_putnbr_fd(log->rrb, fd);
 	write(fd, " rrr: ", 6);
 	ft_putnbr_fd(log->rrr, fd);
 }
@@ -67,7 +67,6 @@ static int	ft_print_total_ops(t_log *log, int fd)
 	return (1);
 }
 
-// écrire un double avec write()
 static void	ft_putdouble_fd(double x, int precision, int fd)
 {
 	int		integer;
@@ -94,18 +93,17 @@ static void	ft_putdouble_fd(double x, int precision, int fd)
 	}
 }
 
-// écrire un double en couleur avec write()
 static void	ft_putdouble_color_fd(double x, int fd)
 {
 	int	r;
 	int	g;
 	int	b;
 
-	r = (int)(255 * (1.0 - x)); // calcul du dégradé rouge -> vert
+	r = (int)(255 * (1.0 - x));
 	g = (int)(255 * x);
 	b = 0;
 	x *= 100;
-	write(fd, "\033[38;2;", 7); // séquence ANSI : "\033[38;2;R;G;Bm"
+	write(fd, "\033[38;2;", 7);
 	ft_putnbr_fd(r, fd);
 	write(fd, ";", 1);
 	ft_putnbr_fd(g, fd);
@@ -113,9 +111,9 @@ static void	ft_putdouble_color_fd(double x, int fd)
 	ft_putnbr_fd(b, fd);
 	write(fd, "m", 1);
 	write(fd, "[bench] ", 8);
-	ft_putdouble_fd(x, 2, fd); // afficher le double
+	ft_putdouble_fd(x, 2, fd);
 	write(fd, "%%", 1);
-	write(fd, "\033[0m", 4); // reset couleur
+	write(fd, "\033[0m", 4);
 	write(fd, "\n", 1);
 }
 

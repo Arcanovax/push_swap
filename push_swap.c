@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:32:52 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/12 18:37:40 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ int	get_flag(char *arg, int *flag)
 void	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 {
 	if (flag % 4 == 0)
-		ft_randinx(a, b, log);
+		ft_radix(a, b, log);
 	else if (flag % 4 == 1)
 		ft_seletion(a, b, log);
 	else if (flag % 4 == 2)
 		ft_bucket(a, b, log);
 	else if (flag % 4 == 3)
-		(void)0;
-	// printf("\ncomplex");
+		ft_radix(a, b, log);
 }
 
 int	ft_bench_mode(t_stack *a, t_stack *b, int flag)
@@ -126,7 +125,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		handle_flag(a, b, flag, NULL);
-	// ft_print_stack(a);
-	// display_stack(a);
 	return (ft_free_exit(str, a, b));
 }
