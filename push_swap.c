@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 13:33:14 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 14:38:20 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		handle_flag(a, b, flag, NULL);
+	ft_print_stack(a);
 	return (ft_free_exit(str, a, b));
 }

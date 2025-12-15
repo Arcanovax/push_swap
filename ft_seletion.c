@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_seletion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:28:26 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/15 14:07:08 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 		imin = ft_get_imin(a, log);
 		ft_push_min(a, b, imin, log);
 	}
-	while (0 < b->size)
+	while (b->head)
 		ft_push_a(a, b, log);
 	return (0);
 }

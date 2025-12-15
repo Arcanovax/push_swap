@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 13:33:03 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 14:44:50 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 	{
 		mask = 1 << bit;
 		size = a->size;
-		if (ft_radix_will_change(a, mask) == 1)
+		if (ft_radix_will_change(a, mask))
 		{
 			while (size--)
 			{
