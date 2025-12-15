@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 18:37:40 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 13:33:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	main(int argc, char **argv)
 		str = ft_cat_nb(str, argv[i++]);
 	if (!str || !ft_split_node(a, str))
 		return (ft_free_all_on_error(NULL, a, NULL));
-	if (flag & (1 << 2))
+		if (flag & (1 << 2))
 	{
 		if (ft_bench_mode(a, b, flag) == -1)
 			return (ft_free_all_on_error(str, a, b));

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 11:11:46 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 13:33:03 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,31 @@ int	ft_radix_will_change(t_stack *a, int mask)
 	}
 	return (0);
 }
+void	ft_rank(t_stack  *a)
+{
+	t_node	*node;
+	int	smallest;
+	int i;
+	
+	i =  0;
+	node = a->head;
+	while (i < a->size)
+	{
+		node = a->head;
+		smallest = INT_MAX;
+		while (node)
+		{
+			if (node->value < smallest && node->value >= INT_MIN + i)
+				smallest = node->value;
+			node = node->next;
+		}
+		node = a->head;
+		while (node->value != smallest)
+			node = node->next;
+		node->value = INT_MIN + i;
+		i++;
+	}
+}
 
 int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 {
@@ -36,6 +61,7 @@ int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 	int	size;
 	int	mask;
 
+	ft_rank(a);
 	bit = 0;
 	while (bit < 32)
 	{
