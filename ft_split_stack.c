@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/11 12:42:57 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 16:59:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ int	ft_split_node(t_stack *stack, char const *s)
 		if (!result)
 			return (1);
 		nb = ft_atoi_stack(result);
+		free(result);
 		if (!add_node(stack, nb))
 			return (0);
 	}

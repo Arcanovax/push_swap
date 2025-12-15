@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 15:26:47 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:36:21 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,26 @@ int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 {
 	int	bit;
 	int	size;
-	int	mask;
 	int	end;
+	int error;
 
+	error = 1;
 	ft_rank(a);
 	bit = 0;
 	end = highest_bit_list(a);
-	while (bit <= end)
+	while (bit <= end && error >= 0)
 	{
-		mask = 1 << bit;
 		size = a->size;
-		while (size--)
+		while (size-- && error >= 0)
 		{
-			if (((a->head->value - INT_MIN) & mask))
-				ft_rotate_a(a, log);
+			if (((a->head->value - INT_MIN) & 1 << bit))
+				error = ft_rotate_a(a, log);
 			else
-				ft_push_b(a, b, log);
+				error = ft_push_b(a, b, log);
 		}
-		while (b->head)
-			ft_push_a(a, b, log);
+		while (b->head && error >= 0)
+			error = ft_push_a(a, b, log);
 		bit++;
 	}
-	return (0);
+	return (error);
 }
