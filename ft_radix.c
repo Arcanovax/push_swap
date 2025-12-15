@@ -6,36 +6,43 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 14:44:50 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/15 15:26:47 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_radix_will_change(t_stack *a, int mask)
+static int	highest_bit_list(t_stack *a)
 {
 	t_node			*node;
-	unsigned int	curr;
-	unsigned int	next;
+	unsigned int	max;
+	int				pos;
 
 	node = a->head;
-	while (node && node->next)
+	max = 0;
+	pos = -1;
+	while (node)
 	{
-		curr = node->value - INT_MIN;
-		next = node->next->value - INT_MIN;
-		if ((curr & mask) != (next & mask))
-			return (1);
+		unsigned int val = node->value - INT_MIN;
+		if (val > max)
+			max = val;
 		node = node->next;
 	}
-	return (0);
+	while (max)
+	{
+		pos++;
+		max >>= 1;
+	}
+	return (pos);
 }
-void	ft_rank(t_stack  *a)
+
+static void	ft_rank(t_stack *a)
 {
 	t_node	*node;
-	int	smallest;
-	int i;
-	
-	i =  0;
+	int		smallest;
+	int		i;
+
+	i = 0;
 	node = a->head;
 	while (i < a->size)
 	{
@@ -60,25 +67,24 @@ int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 	int	bit;
 	int	size;
 	int	mask;
+	int	end;
 
 	ft_rank(a);
 	bit = 0;
-	while (bit < 32)
+	end = highest_bit_list(a);
+	while (bit <= end)
 	{
 		mask = 1 << bit;
 		size = a->size;
-		if (ft_radix_will_change(a, mask))
+		while (size--)
 		{
-			while (size--)
-			{
-				if (((a->head->value - INT_MIN) & mask))
-					ft_rotate_a(a, log);
-				else
-					ft_push_b(a, b, log);
-			}
-			while (b->head)
-				ft_push_a(a, b, log);
+			if (((a->head->value - INT_MIN) & mask))
+				ft_rotate_a(a, log);
+			else
+				ft_push_b(a, b, log);
 		}
+		while (b->head)
+			ft_push_a(a, b, log);
 		bit++;
 	}
 	return (0);
