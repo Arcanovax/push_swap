@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/12 15:32:52 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/15 17:02:30 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,30 +69,36 @@ int	get_flag(char *arg, int *flag)
 	return (0);
 }
 
-void	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
+int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 {
-	if (flag % 4 == 0)
-		ft_randinx(a, b, log);
-	else if (flag % 4 == 1)
-		ft_seletion(a, b, log);
+	if (flag % 4 == 1)
+		return (ft_seletion(a, b, log));
 	else if (flag % 4 == 2)
-		ft_bucket(a, b, log);
+		return (ft_bucket(a, b, log));
 	else if (flag % 4 == 3)
-		(void)0;
-	// printf("\ncomplex");
+		return (ft_radix(a, b, log));
+	return (ft_radix(a, b, log));
 }
 
-int	ft_bench_mode(t_stack *a, t_stack *b, int flag)
+static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 {
-	double	cp_disorder;
 	t_log	*log;
-
-	if (ft_init_log(&log) == -1)
-		return (-1);
+	double	cp_disorder;
+	
+	log = NULL;
 	cp_disorder = compute_disorder(a);
-	handle_flag(a, b, flag, log);
-	ft_print_bench(cp_disorder, flag, log);
-	free(log);
+	if (flag & (1 << 2))
+		if (ft_init_log(&log) == -1)
+			return (-1);
+	if (handle_flag(a, b, flag, log) == -1)
+		{
+			free(log);
+			return (-1);
+		}
+	if (flag & (1 << 2))
+		ft_print_bench(cp_disorder, flag, log);
+	if (log)
+		free(log);
 	return (0);
 }
 
@@ -100,33 +106,26 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	int		flag;
+	char	*str;
 	t_stack	*a;
 	t_stack	*b;
-	char	*str;
 
-	i = 1;
-	str = NULL;
 	if (argc == 1)
 		return (0);
 	flag = 0;
+	i = 1;
 	while (i <= argc && get_flag(argv[i], &flag))
 		i++;
 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
 		return (ft_free_all_on_error(NULL, a, NULL));
+	str = NULL;
 	if (i < argc)
 		str = ft_alloc_str(argv[i++]);
 	while (str && i < argc)
 		str = ft_cat_nb(str, argv[i++]);
-	if (!str || !ft_split_node(a, str))
-		return (ft_free_all_on_error(NULL, a, NULL));
-	if (flag & (1 << 2))
-	{
-		if (ft_bench_mode(a, b, flag) == -1)
-			return (ft_free_all_on_error(str, a, b));
-	}
-	else
-		handle_flag(a, b, flag, NULL);
-	// ft_print_stack(a);
-	// display_stack(a);
+	if (!str || (ft_split_node(a, str) < 0) || !a->head)
+		return (ft_free_all_on_error(str, a, b));
+	if (ft_sort_stack(a, b, flag) == -1)
+		return (ft_free_all_on_error(str, a, b));
 	return (ft_free_exit(str, a, b));
 }
