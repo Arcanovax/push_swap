@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 11:17:19 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 15:02:54 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int		ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log);
 int		ft_seletion(t_stack *a, t_stack *b, t_log *log);
 int		ft_radix(t_stack *a, t_stack *b, t_log *log);
 int		ft_bucket(t_stack *a, t_stack *b, t_log *log);
+
+int		ft_sqrt(int nb);
+void	get_min_max(t_stack *a, t_bucket *bucket);
+int		get_bucket_imax(t_stack *b, int range_min);
 
 int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
 int		ft_free_exit(char *str, t_stack *a, t_stack *b);
