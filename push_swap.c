@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:29:35 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 11:17:56 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,6 @@ static int	ft_strcmp(char *s1, char *s2)
 			return (1);
 		i++;
 	}
-	return (0);
-}
-
-static int	ft_set_flag(int *flag, int n)
-{
-	*flag += n;
-	if (n < 4)
-		*flag += 8;
-	return (1);
-}
-
-static int	get_flag(char *arg, int *flag)
-{
-	if (ft_strcmp(arg, "--adaptive") == 0 && *flag < 8)
-		return (ft_set_flag(flag, 0));
-	else if (ft_strcmp(arg, "--simple") == 0 && *flag < 8)
-		return (ft_set_flag(flag, 1));
-	else if (ft_strcmp(arg, "--medium") == 0 && *flag < 8)
-		return (ft_set_flag(flag, 2));
-	else if (ft_strcmp(arg, "--complex") == 0 && *flag < 8)
-		return (ft_set_flag(flag, 3));
-	else if (ft_strcmp(arg, "--bench") == 0 && (!(*flag & (1 << 2))))
-		return (ft_set_flag(flag, 4));
 	return (0);
 }
 

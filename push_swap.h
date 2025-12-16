@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:31:53 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 11:17:19 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ void	ft_putdouble_fd(double x, int precision, int fd);
 
 //this ft need to be remove
 void	ft_print_stack(t_stack *stk);
+
+int		get_flag(char *arg, int *flag);
+int		ft_set_flag(int *flag, int n);
 
 #endif
