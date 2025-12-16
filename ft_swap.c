@@ -6,13 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:24:08 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 17:02:18 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_swap(t_stack *stack)
+int	ft_swap(t_stack *stack)
 {
 	int	tmp;
 

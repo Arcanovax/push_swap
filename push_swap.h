@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 11:17:19 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 16:30:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,18 @@ typedef struct s_log
 	int	rrr;
 }	t_log;
 
+int		ft_swap(t_stack *stack);
 int		ft_swap_a(t_stack *a, t_log *log);
 int		ft_swap_b(t_stack *b, t_log *log);
 int		ft_swap_ab(t_stack *a, t_stack *b, t_log *log);
+int		ft_push(t_stack *stack_target, t_stack *stack_node);
 int		ft_push_a(t_stack *a, t_stack *b, t_log *log);
 int		ft_push_b(t_stack *a, t_stack *b, t_log *log);
+int		ft_rotate(t_stack *stack);
 int		ft_rotate_a(t_stack *a, t_log *log);
 int		ft_rotate_b(t_stack *b, t_log *log);
 int		ft_rotate_ab(t_stack *a, t_stack *b, t_log *log);
+int		ft_reverse_rotate(t_stack *stack);
 int		ft_reverse_rotate_a(t_stack *a, t_log *log);
 int		ft_reverse_rotate_b(t_stack *b, t_log *log);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log);
@@ -92,6 +96,5 @@ void	ft_putdouble_fd(double x, int precision, int fd);
 void	ft_print_stack(t_stack *stk);
 
 int		get_flag(char *arg, int *flag);
-int		ft_set_flag(int *flag, int n);
 
 #endif
