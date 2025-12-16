@@ -1,2 +1,49 @@
-# push_swap
-push_swap
+*This project has been created as partof the 42 curriculum by Mthetcha,Mboutte.*
+
+# Description
+
+The Push Swap project is a set of **algorithms** for sorting different lists of numbers of varying sizes and complexity. It is based on sorting between **stacks A and B** and a list of instructions for moving the list. The aim of this project is to work on **optimization**, discover **different sorting methods**, and **adapt** the sorting methods to make them work in two stacks.
+
+# Instructions
+
+Use `make` to compile all the files and get the push_swap file.
+
+`./push_swap` : **Main function** that returns the list of instructions used to sort the list.
+
+### Flags :
+- `--simple` : Selection Sort *(by mthetcha)*
+
+- `--medium` : Bucket Sort *(by mthetcha)*
+- `--complex` : Radix Sort *(by mboutte)*
+- `--adaptive` : Evaluate the complexity of the list and use on of the sorts (Default Flag)
+- `--bench` : Display informations about the sorting process *(by mboutte)*
+
+# Resources
+
+- Documentation on internet
+- https://visualgo.net/en/sorting : to visualize sorting process
+
+# Technical explanation
+
+### Selection Sort :
+
+This sorting has a complexity of O(n²). It works by repeating three steps: finding the maximum value in stack A, moving it to the top, and finally pushing it. These steps are repeated until stack A is empty. Finally, B is unstacked on A to arrange the values in ascending order.
+
+### Bucket Sort :
+
+This sorting has a complexity of O(n√n). It works by separating the list into √n buckets in stack B by removing the values included in each range from stack A. Each bucket is a range of values.
+```
+[12, 8, 6, 4, 1, 10, 3, 9, 5, 7, 2, 11] 	Stack A
+[] 											Stack B
+
+[1,3,2,4]		First Bucket (Values between 1 and 4)
+[8,6,5,7]		Second Bucket (Values between 5 and 8)
+[12,10,9,11]	Last Bucket (Values between 9 and 12)
+
+[] 											Stack A
+[1, 3, 2, 4, 8, 6, 5, 7, 12, 10, 9, 11] 	Stack B
+ ```
+
+Finally, the algorithm will unstack stack B to A, from the largest values to the smallest, processing by bucket, from the largest to the smallest.
+
+### Radix Sort :
