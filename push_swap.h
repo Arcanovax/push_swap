@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 16:30:14 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 11:21:52 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+
+# include <stdio.h>
+// # include <fcntl.h>
+
+# define BUFFER_SIZE 64
 
 typedef struct s_bucket
 {
@@ -95,6 +101,9 @@ void	ft_putdouble_fd(double x, int precision, int fd);
 //this ft need to be remove
 void	ft_print_stack(t_stack *stk);
 
+char	*get_next_line(int fd);
+
 int		get_flag(char *arg, int *flag);
 
+int		ft_strlen_secure(char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 16:32:56 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 12:12:26 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 	t_log	*log;
 	double	cp_disorder;
 
-	log = NULL;
 	cp_disorder = compute_disorder(a);
+	log = NULL;
 	if (flag & (1 << 2))
 		if (ft_init_log(&log) == -1)
 			return (-1);
-	if (handle_flag(a, b, flag, log) == -1)
+	if (cp_disorder != 1 && handle_flag(a, b, flag, log) == -1)
 	{
 		free(log);
 		return (-1);
@@ -45,30 +45,30 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 	return (0);
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	int		i;
-// 	int		flag;
-// 	char	*str;
-// 	t_stack	*a;
-// 	t_stack	*b;
+int	main(int argc, char **argv)
+{
+	int		i;
+	int		flag;
+	char	*str;
+	t_stack	*a;
+	t_stack	*b;
 
-// 	if (argc == 1)
-// 		return (0);
-// 	flag = 0;
-// 	i = 1;
-// 	while (i <= argc && get_flag(argv[i], &flag))
-// 		i++;
-// 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
-// 		return (ft_free_all_on_error(NULL, a, NULL));
-// 	str = NULL;
-// 	if (i < argc)
-// 		str = ft_alloc_str(argv[i++]);
-// 	while (str && i < argc)
-// 		str = ft_cat_nb(str, argv[i++]);
-// 	if (!str || (ft_split_node(a, str) < 0) || !a->head)
-// 		return (ft_free_all_on_error(str, a, b));
-// 	if (ft_sort_stack(a, b, flag) == -1)
-// 		return (ft_free_all_on_error(str, a, b));
-// 	return (ft_free_exit(str, a, b));
-// }
+	if (argc == 1)
+		return (0);
+	flag = 0;
+	i = 1;
+	while (i < argc && get_flag(argv[i], &flag))
+		i++;
+	if (init_stack(&a) == -1 || init_stack(&b) == -1)
+		return (ft_free_all_on_error(NULL, a, NULL));
+	str = NULL;
+	if (i < argc)
+		str = ft_alloc_str(argv[i++]);
+	while (str && i < argc)
+		str = ft_cat_nb(str, argv[i++]);
+	if (!str || (ft_split_node(a, str) < 0) || !a->head)
+		return (ft_free_all_on_error(str, a, b));
+	if (ft_sort_stack(a, b, flag) == -1)
+		return (ft_free_all_on_error(str, a, b));
+	return (ft_free_exit(str, a, b));
+}

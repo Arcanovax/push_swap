@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:07:03 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 16:32:48 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 11:21:33 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_full_of_int(char *str)
 	return (1);
 }
 
-static int	ft_strlen_secure(char *str)
+int	ft_strlen_secure(char *str)
 {
 	int	i;
 
