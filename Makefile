@@ -2,6 +2,7 @@ NAME = push_swap
 NAME_bonus = checker
 
 CC = cc
+
 SRCS = \
 	compute_disorder.c	\
 	main_test.c			\
@@ -41,11 +42,14 @@ SRCS_BONUS= \
 	ft_split_stack.c	\
 	ft_swap.c			\
 
-OBJS = $(patsubst %.c, %.o, $(SRCS))
-OBJS_bonus= $(patsubst %.c, %.o, $(SRCS_BONUS))
 
-DEPS = $(patsubst %.c, %.d, $(SRCS))
-DEPS_bonus = $(patsubst %.c, %.d, $(SRCS_BONUS))
+OBJDIR = .obj
+
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
+OBJS_bonus = $(SRCS_BONUS:%.c=$(OBJDIR)/%.o)
+
+DEPS = $(OBJS:.o=.d)
+DEPS_bonus = $(OBJS_bonus:.o=.d)
 
 CFLAGS += -Werror -Wextra -Wall -MMD -MP
 
@@ -58,6 +62,10 @@ bonus: $(NAME_bonus)
 
 $(NAME_bonus): $(OBJS_bonus)
 	$(CC) $(OBJS_bonus) -o $@
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(DEPS) $(OBJS_bonus) $(DEPS_bonus)

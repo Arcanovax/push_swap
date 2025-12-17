@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/17 11:48:21 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 16:42:46 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,12 @@ int	parcing(int argc, char **argv, t_stack **a, t_stack **b)
 		str = ft_alloc_str(argv[i++]);
 	while (str && i < argc)
 		str = ft_cat_nb(str, argv[i++]);
-	if (!str || (ft_split_node(*a, str) < 0) || !(*a)->head)
+	if ((ft_split_node(*a, str) < 0) || !(*a)->head)
+	{
+		if (str)
+			free(str);
 		return (-1);
+	}	
 	if (str)
 		free(str);
 	return (0);
@@ -139,13 +143,16 @@ int	main(int argc, char **argv)
 	
 	if (parcing(argc, argv, &a, &b) < 0)
 		return (ft_free_all_on_error(NULL, a, b));
-	while ((line = get_next_line(0)))
+	line = get_next_line(0);
+	while (line)
 	{
-		if (ft_exec(line, a, b) == -1) {
-			__builtin_printf("Error + need to free");
-			return (-1);
-		} 
-		free(line);		
+		if (ft_exec(line, a, b) == -1)
+		{
+			free(line);
+			return (ft_free_all_on_error(NULL, a, b));
+		}
+		free(line); 
+		line = get_next_line(0);		
 	}
 	if (compute_disorder(a) == 1)
 		write(1, "\033[38;2;0;255;0m[OK]\033[0m\n", 24);
