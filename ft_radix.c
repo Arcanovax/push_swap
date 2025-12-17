@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 17:25:41 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 14:33:22 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,30 +63,60 @@ static void	ft_rank(t_stack *a)
 	}
 }
 
+static int	ft_radix_push_bit(t_stack *origin, t_stack *target, t_log *log,
+		int bit)
+{
+	int	size;
+	int	error;
+
+	error = 1;
+	size = origin->size;
+	while (size-- && error >= 0)
+	{
+		if ((origin->head->value - INT_MIN) & 1 << bit)
+			error = ft_rotate_a(origin, log);
+		else
+			error = ft_push_b(origin, target, log);
+	}
+	return (error);
+}
+
+static int	ft_radix_empty(t_stack *origin, t_stack *target, t_log *log,
+		int bit)
+{
+	int	size;
+	int	error;
+
+	error = 1;
+	size = origin->size;
+	while (size-- && error >= 0)
+	{
+		if ((origin->head->value - INT_MIN) & 1 << (bit))
+			error = ft_push_a(target, origin, log);
+		else
+			error = ft_rotate_b(origin, log);
+	}
+	return (error);
+}
+
 int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 {
 	int	bit;
-	int	size;
 	int	end;
 	int	error;
 
 	error = 1;
 	ft_rank(a);
-	bit = 0;
 	end = highest_bit_list(a);
+	bit = 0;
 	while (bit <= end && error >= 0)
 	{
-		size = a->size;
-		while (size-- && error >= 0)
-		{
-			if (((a->head->value - INT_MIN) & 1 << bit))
-				error = ft_rotate_a(a, log);
-			else
-				error = ft_push_b(a, b, log);
-		}
-		while (b->head && error >= 0)
-			error = ft_push_a(a, b, log);
+		error = ft_radix_push_bit(a, b, log, bit);
 		bit++;
+		if (bit <= end && error >= 0)
+			error = ft_radix_empty(b, a, log, bit);
 	}
+	while (b->head)
+		ft_push_a(a, b, log);
 	return (error);
 }
