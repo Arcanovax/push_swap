@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_seletion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/15 17:19:33 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/17 09:56:40 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,46 @@ static int	ft_get_imin(t_stack *a)
 	return (imin);
 }
 
-void	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
+static int	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 {
 	int	i;
+	int error;
 
+	error = 1;
 	i = 0;
 	if (imin <= a->size / 2)
 	{
-		while (i < imin)
+		while (i < imin && error > 0)
 		{
-			ft_rotate_a(a, log);
+			error = ft_rotate_a(a, log);
 			i++;
 		}
 	}
 	else
 	{
-		while (i < a->size - imin)
+		while (i < a->size - imin && error > 0)
 		{
-			ft_reverse_rotate_a(a, log);
+			error = ft_reverse_rotate_a(a, log);
 			i++;
 		}
 	}
-	ft_push_b(a, b, log);
+	if (error > 0)
+		error = ft_push_b(a, b, log);
+	return (error);
 }
 
 int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 {
 	int	imin;
+	int error;
 
-	while (a->size > 0)
+	error = 1;
+	while (a->size > 0 && error > 0)
 	{
 		imin = ft_get_imin(a);
-		ft_push_min(a, b, imin, log);
+		error = ft_push_min(a, b, imin, log);
 	}
-	while (b->head)
-		ft_push_a(a, b, log);
-	return (0);
+	while (b->head && error > 0)
+		error = ft_push_a(a, b, log);
+	return (error);
 }
