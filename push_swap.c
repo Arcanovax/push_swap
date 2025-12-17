@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 11:17:56 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/16 15:28:20 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if ((s1[i] == '\0') || (s1[i] < s2[i]))
-			return (-1);
-		if ((s2[i] == '\0') || (s1[i] > s2[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 static int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 {
