@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 16:17:32 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:45:37 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 16:01:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int	ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log)
 	if (ft_reverse_rotate_rotate(a, b) == -1)
 		return (-1);
 	if ((log))
-			log->rrr += 1;
+		log->rrr += 1;
 	return (write(1, "rrr\n", 4));
 }
