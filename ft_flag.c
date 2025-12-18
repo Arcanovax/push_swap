@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:15:32 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/16 15:28:30 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:58:50 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-int	ft_set_flag(int *flag, int n)
+static int	ft_set_flag(int *flag, int n)
 {
 	*flag += n;
 	if (n < 4)

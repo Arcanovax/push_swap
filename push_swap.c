@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 15:28:20 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:58:04 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 	t_log	*log;
 	double	cp_disorder;
 
-	log = NULL;
 	cp_disorder = compute_disorder(a);
+	log = NULL;
 	if (flag & (1 << 2))
 		if (ft_init_log(&log) == -1)
 			return (-1);
-	if (handle_flag(a, b, flag, log) == -1)
+	if (cp_disorder != 1 && handle_flag(a, b, flag, log) == -1)
 	{
 		free(log);
 		return (-1);
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 		return (0);
 	flag = 0;
 	i = 1;
-	while (i <= argc && get_flag(argv[i], &flag))
+	while (i < argc && get_flag(argv[i], &flag))
 		i++;
 	if (init_stack(&a) == -1 || init_stack(&b) == -1)
 		return (ft_free_all_on_error(NULL, a, NULL));

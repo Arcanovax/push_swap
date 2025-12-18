@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 15:02:54 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 11:57:52 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+
+# include <stdio.h>
+// # include <fcntl.h>
+
+# define BUFFER_SIZE 64
 
 typedef struct s_bucket
 {
@@ -56,14 +62,18 @@ typedef struct s_log
 	int	rrr;
 }	t_log;
 
+int		ft_swap(t_stack *stack);
 int		ft_swap_a(t_stack *a, t_log *log);
 int		ft_swap_b(t_stack *b, t_log *log);
 int		ft_swap_ab(t_stack *a, t_stack *b, t_log *log);
+int		ft_push(t_stack *stack_target, t_stack *stack_node);
 int		ft_push_a(t_stack *a, t_stack *b, t_log *log);
 int		ft_push_b(t_stack *a, t_stack *b, t_log *log);
+int		ft_rotate(t_stack *stack);
 int		ft_rotate_a(t_stack *a, t_log *log);
 int		ft_rotate_b(t_stack *b, t_log *log);
 int		ft_rotate_ab(t_stack *a, t_stack *b, t_log *log);
+int		ft_reverse_rotate(t_stack *stack);
 int		ft_reverse_rotate_a(t_stack *a, t_log *log);
 int		ft_reverse_rotate_b(t_stack *b, t_log *log);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log);
@@ -95,7 +105,9 @@ void	ft_putdouble_fd(double x, int precision, int fd);
 //this ft need to be remove
 void	ft_print_stack(t_stack *stk);
 
-int		get_flag(char *arg, int *flag);
-int		ft_set_flag(int *flag, int n);
+char	*get_next_line(int fd);
 
+int		get_flag(char *arg, int *flag);
+
+int		ft_strlen_secure(char *str);
 #endif
