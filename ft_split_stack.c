@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 16:59:14 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:20:30 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ static int	ft_atoi_stack(const char *str)
 	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '-')
+	while (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i] == '-')
+			sign = -sign;
 		i++;
-		sign = -sign;
 	}
 	while ('0' <= str[i] && str[i] <= '9')
 	{
