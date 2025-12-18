@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:00:09 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 15:02:40 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 13:55:33 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,3 @@ void	get_min_max(t_stack *a, t_bucket *bucket)
 	bucket->max = max;
 }
 
-int	get_bucket_imax(t_stack *b, int range_min)
-{
-	t_node	*current_node;
-	int		imax;
-	int		max;
-	int		i;
-
-	i = 0;
-	current_node = b->head;
-	max = current_node->value;
-	imax = 0;
-	while (current_node && current_node->value >= range_min && i < b->size)
-	{
-		if (current_node->value >= max)
-		{
-			max = current_node->value;
-			imax = i;
-		}
-		current_node = current_node->next;
-		i++;
-	}
-	return (imax);
-}
