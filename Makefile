@@ -21,6 +21,7 @@ SRCS = \
 	ft_split_stack.c	\
 	ft_swap.c			\
 	push_swap.c			\
+	ft_bucket_utils.c	\
 
 SRCS_BONUS= \
 	checker.c			\
@@ -41,6 +42,7 @@ SRCS_BONUS= \
 	ft_seletion.c		\
 	ft_split_stack.c	\
 	ft_swap.c			\
+	ft_bucket_utils.c	\
 
 
 OBJDIR = .obj

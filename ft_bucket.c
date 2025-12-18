@@ -6,14 +6,14 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 13:55:24 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 14:03:52 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	ft_print_stack(t_stack *stk)
+void	print_stack(t_stack *stk)
 {
 	t_node	*node;
 
@@ -168,8 +168,8 @@ int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 				return (-1);
 		}
 		printf("\nAFTER\n");
-		ft_print_stack(a);
-		ft_print_stack(b);
+		print_stack(a);
+		print_stack(b);
 		t++;
 		i--;
 	}
