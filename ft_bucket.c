@@ -6,37 +6,98 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/16 15:00:40 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 13:55:24 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-static int	ft_push_max_range(t_stack *a, t_stack *b, int range_min, t_log *log)
+void	ft_print_stack(t_stack *stk)
+{
+	t_node	*node;
+
+	node = stk->head;
+	__builtin_printf("\n\n");
+	while (node)
+	{
+		__builtin_printf("%2d\n",node->value);
+		node = node->next;
+	}
+}
+
+int	get_bucket_imaxN(t_stack *b, int range_min)
+{
+	t_node	*current_node;
+	int		imax;
+	int		max;
+	int		i;
+
+	i = 0;
+	current_node = b->head;
+	max = current_node->value;
+	imax = 0;
+	while (current_node && current_node->value >= range_min && i < b->size)
+	{
+		if (current_node->value >= max)
+		{
+			max = current_node->value;
+			imax = i;
+		}
+		current_node = current_node->next;
+		i++;
+	}
+	i = 0;
+	current_node = b->tails;
+	while (current_node && current_node->value >= range_min && i <= b->size)
+	{
+		if (current_node->value >= max)
+		{
+			max = current_node->value;
+			imax = b->size - i - 1;
+		}
+		current_node = current_node->prev;
+		i++;
+	}
+
+	return (imax);
+}
+
+static int	ft_push_max_rangeN(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
-	int	max;
 	int	imax;
 	int	error;
 
 	error = 1;
-	max = b->head->value;
 	i = 0;
-	imax = get_bucket_imax(b, range_min);
-	while (i != imax && error > 0)
+	imax = get_bucket_imaxN(b, bucket->range_min);
+
+	if (imax <= b->size / 2)
 	{
-		error = ft_rotate_b(b, log);
-		i++;
+		while (i < imax && error > 0)
+		{
+			error = ft_rotate_b(b, log);
+			i++;
+		}
 	}
+	else
+	{
+		while (i < b->size - imax && error > 0)
+		{
+			error = ft_reverse_rotate_b(b, log);
+			i++;
+		}
+	}
+
 	if (error > 0)
 		error = ft_push_a(a, b, log);
-	while (i != 0 && error > 0)
-	{
-		error = ft_reverse_rotate_b(b, log);
-		i--;
-	}
+
 	return (error);
 }
+
+
+
 
 static int	ft_push_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
@@ -87,9 +148,10 @@ int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
 	int	j;
+	int t = 0;
 
 	i = bucket->nb;
-	while (b->size)
+	while (b->size )
 	{
 		j = 0;
 		bucket->range_min = bucket->min + i * bucket->size;
@@ -97,13 +159,18 @@ int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 			bucket->range_max = bucket->max;
 		else
 			bucket->range_max = bucket->range_min + bucket->size - 1;
-		while (b->head && b->head->value >= bucket->range_min)
+		printf("min %d et max %d\n", bucket->range_min,bucket->range_max);
+		while ((b->head && b->head->value >= bucket->range_min))
 		{
 			if (!b->head)
 				break ;
-			if (ft_push_max_range(a, b, bucket->range_min, log) < 0)
+			if (ft_push_max_rangeN(a, b, bucket, log) < 0)
 				return (-1);
 		}
+		printf("\nAFTER\n");
+		ft_print_stack(a);
+		ft_print_stack(b);
+		t++;
 		i--;
 	}
 	return (1);
