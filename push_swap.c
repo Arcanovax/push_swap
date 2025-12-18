@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 15:23:06 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:30:47 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 		return (ft_radix(a, b, log));
 	else
 		return (ft_seletion(a, b, log));
-	
 }
 
 static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)

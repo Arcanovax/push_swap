@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 15:36:18 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/17 09:56:40 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 15:33:05 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_get_imin(t_stack *a)
 static int	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 {
 	int	i;
-	int error;
+	int	error;
 
 	error = 1;
 	i = 0;
@@ -67,7 +67,7 @@ static int	ft_push_min(t_stack *a, t_stack *b, int imin, t_log *log)
 int	ft_seletion(t_stack *a, t_stack *b, t_log *log)
 {
 	int	imin;
-	int error;
+	int	error;
 
 	error = 1;
 	while (a->size > 0 && error > 0)
