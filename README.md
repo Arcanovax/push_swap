@@ -4,6 +4,7 @@
 
 The Push Swap project is a set of **algorithms** for sorting different lists of numbers of varying sizes and complexity. It is based on sorting between **stacks A and B** and a list of instructions for moving the list. The aim of this project is to work on **optimization**, discover **different sorting methods**, and **adapt** the sorting methods to make them work in two stacks.
 
+
 # Instructions
 
 Use `make` to compile all the files and get the push_swap file.
@@ -17,6 +18,16 @@ Use `make` to compile all the files and get the push_swap file.
 - `--complex` : Radix Sort *(by mboutte)*
 - `--adaptive` : Evaluate the complexity of the list and use on of the sorts (Default Flag)
 - `--bench` : Display informations about the sorting process *(by mboutte)*
+
+####  Adaptive Falg :
+
+In some cases, using the algorithm with the best algorithmic complexity isn't the best choice. For example, with small arrays, selection sort is faster than radix sort because the time to loop through the array is negligible compared to the time to push multiple times the array between two stacks.
+The goal isn't to count the number of operations of each algorithm and choose the best because that means executing all algorithms in each case including the shortest.
+In our program, we use formulas based on graphs to choose the best algorithm based on multiple factors.
+
+<p style="text-align:center;">
+  <img src=".images_readme/500nb_cpDis_50.png" width="1280">
+  <img src=".images_readme/graph_3D.png" width="1280">
 
 # Resources
 
