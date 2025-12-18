@@ -11,8 +11,8 @@ Use `make` to compile all the files and get the push_swap file.
 `./push_swap` : **Main function** that returns the list of instructions used to sort the list.
 
 ### Flags :
-- `--simple` : Selection Sort *(by mthetcha)*
 
+- `--simple` : Selection Sort *(by mthetcha)*
 - `--medium` : Bucket Sort *(by mthetcha)*
 - `--complex` : Radix Sort *(by mboutte)*
 - `--adaptive` : Evaluate the complexity of the list and use on of the sorts (Default Flag)
@@ -25,11 +25,11 @@ Use `make` to compile all the files and get the push_swap file.
 
 # Technical explanation
 
-### Selection Sort :
+### Selection Sort O(n²):
 
 This sorting has a complexity of O(n²). It works by repeating three steps: finding the maximum value in stack A, moving it to the top, and finally pushing it. These steps are repeated until stack A is empty. Finally, B is unstacked on A to arrange the values in ascending order.
 
-### Bucket Sort :
+### Bucket Sort O(n√n):
 
 This sorting has a complexity of O(n√n). It works by separating the list into √n buckets in stack B by removing the values included in each range from stack A. Each bucket is a range of values.
 ```
@@ -46,4 +46,22 @@ This sorting has a complexity of O(n√n). It works by separating the list into 
 
 Finally, the algorithm will unstack stack B to A, from the largest values to the smallest, processing by bucket, from the largest to the smallest.
 
-### Radix Sort :
+### Radix Sort O(n log(n)):
+
+This sorting has a complexity of O(n*m) where m is numbers of bit of the biggest numbers. It works by sorting numbers bit by bit, starting from the least significant bit to the most significant bit.
+
+```
+Numbers : [3, 2, 1, 0]		| Binary = [11, 10, 01, 00]
+
+First passage: Sorting on the first bit
+stack A = [2, 0] 			| Binary = [10, 00]
+stack B = [3, 1]			| Binary = [11, 01]
+End of step = [2, 0, 3, 1]	| Binary = [10, 00, 11, 01]
+
+Second passage: Sorting on the second bit
+stack A = [0, 1]			| Binary = [00, 01]
+stack B = [2, 3]			| Binary = [10, 11]
+End of step = [0, 1, 2, 3]	| Binary = [00, 01, 10, 11]
+
+Arrey = [0, 1, 2, 3]
+```
