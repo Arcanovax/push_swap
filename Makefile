@@ -5,7 +5,7 @@ CC = cc
 
 SRCS = \
 	compute_disorder.c	\
-	main_test.c			\
+	debug.c			\
 	ft_bucket.c			\
 	ft_flag.c			\
 	ft_free_exit.c		\
@@ -25,7 +25,7 @@ SRCS = \
 
 SRCS_BONUS= \
 	checker.c			\
-	main_test.c			\
+	debug.c				\
 	get_next_line.c		\
 	compute_disorder.c	\
 	ft_bucket.c			\

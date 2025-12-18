@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 15:06:55 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 00:09:39 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,10 @@ static int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
-	int	j;
 
 	i = bucket->nb;
 	while (b->size)
 	{
-		j = 0;
 		bucket->range_min = bucket->min + (i * bucket->size);
 		if (i == bucket->nb - 1)
 			bucket->range_max = bucket->max;

@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 17:27:03 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 17:28:29 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 00:08:10 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
 
-	if (n == -INT_MIN)
+	if (n == INT_MIN)
 		return (write(fd, "-2147483647", 11));
 	if (n < 0)
 	{
