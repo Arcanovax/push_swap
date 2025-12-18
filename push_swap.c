@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 11:58:04 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:23:06 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ static int	handle_flag(t_stack *a, t_stack *b, int flag, t_log *log)
 		return (ft_bucket(a, b, log));
 	else if (flag % 4 == 3)
 		return (ft_radix(a, b, log));
-	return (ft_radix(a, b, log));
+	if (((1 - compute_disorder(a)) * a->size) > 20)
+		return (ft_radix(a, b, log));
+	else
+		return (ft_seletion(a, b, log));
+	
 }
 
 static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
@@ -39,7 +43,7 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 		return (-1);
 	}
 	if (flag & (1 << 2))
-		ft_print_bench(cp_disorder, flag, log);
+		ft_print_bench(cp_disorder, flag, log, a->size);
 	if (log)
 		free(log);
 	return (0);

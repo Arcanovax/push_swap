@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/15 17:28:23 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:22:25 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,16 @@ static void	ft_putdouble_color_fd(double x, int fd)
 	write(fd, "\n", 1);
 }
 
-static int	ft_print_strategy(int flag, int fd)
+static int	ft_print_strategy(int flag, int fd, double cp_disorder, int size)
 {
 	write(fd, "Strategy: ", 10);
 	if (flag % 4 == 0)
-		write(fd, "Adaptive O(n log(n))\n", 21);
+	{
+		if (((1 - cp_disorder) * size) > 20)
+			write(fd, "Adaptive O(n log(n))\n", 21);
+		else
+			write(fd, "Adaptive O(n²)\n", 16);
+	}
 	else if (flag % 4 == 1)
 		write(fd, "Simple O(n²)\n", 14);
 	else if (flag % 4 == 2)
@@ -87,7 +92,7 @@ static int	ft_print_strategy(int flag, int fd)
 	return (0);
 }
 
-int	ft_print_bench(double cp_disorder, int flag, t_log *log)
+int	ft_print_bench(double cp_disorder, int flag, t_log *log, int size)
 {
 	int		fd;
 	char	*line;
@@ -103,7 +108,7 @@ int	ft_print_bench(double cp_disorder, int flag, t_log *log)
 	write(fd, "\033[0m", 4);
 	ft_putdouble_color_fd(cp_disorder, fd);
 	write(fd, "\033[38;2;0;0;255m", 15);
-	ft_print_strategy(flag, fd);
+	ft_print_strategy(flag, fd, cp_disorder, size);
 	ft_print_total_ops(log, fd);
 	ft_print_log(log, fd);
 	write(fd, "\033[0m\n", 5);

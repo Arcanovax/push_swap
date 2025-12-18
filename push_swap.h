@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 11:57:52 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:23:18 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		ft_init_log(t_log **log);
 char	*ft_alloc_str(char *str);
 char	*ft_cat_nb(char *base, char *cating);
 
-int		ft_print_bench(double cp_disorder, int flag, t_log *log);
+int		ft_print_bench(double cp_disorder, int flag, t_log *log, int size);
 double	compute_disorder(t_stack *stack);
 
 int		ft_putnbr_fd(int n, int fd);
