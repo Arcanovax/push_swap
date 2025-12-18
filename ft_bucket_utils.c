@@ -6,7 +6,7 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 15:00:09 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 13:55:33 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 15:06:18 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,46 @@ void	get_min_max(t_stack *a, t_bucket *bucket)
 	bucket->max = max;
 }
 
+static void	get_imax_bottom(t_stack *b, int range_min, int max, int *imax)
+{
+	int		i;
+	t_node	*current_node;
+
+	i = 0;
+	current_node = b->tails;
+	while (current_node && current_node->value >= range_min && i <= b->size)
+	{
+		if (current_node->value >= max)
+		{
+			max = current_node->value;
+			*imax = b->size - i - 1;
+		}
+		current_node = current_node->prev;
+		i++;
+	}
+}
+
+int	get_bucket_imax(t_stack *b, int range_min)
+{
+	t_node	*current_node;
+	int		imax;
+	int		max;
+	int		i;
+
+	i = 0;
+	current_node = b->head;
+	max = current_node->value;
+	imax = 0;
+	while (current_node && current_node->value >= range_min && i < b->size)
+	{
+		if (current_node->value >= max)
+		{
+			max = current_node->value;
+			imax = i;
+		}
+		current_node = current_node->next;
+		i++;
+	}
+	get_imax_bottom(b, range_min, max, &imax);
+	return (imax);
+}

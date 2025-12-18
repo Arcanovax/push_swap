@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 15:48:32 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 16:00:32 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 
 # include <stdio.h>
 // # include <fcntl.h>

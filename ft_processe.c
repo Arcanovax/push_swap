@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_processe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:07:03 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:21:00 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:33:26 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static int	ft_full_of_int(char *str)
 	i = -1;
 	while (str[++i])
 		if (!('0' <= str[i] && str[i] <= '9') && !(str[i] == ' ')
-			&& !(9 <= str[i] && str[i] <= 13) && !(str[i] == '-') && !(str[i] == '+'))
+			&& !(9 <= str[i] && str[i] <= 13) && !(str[i] == '-')
+			&& !(str[i] == '+'))
 			return (0);
 	return (1);
 }

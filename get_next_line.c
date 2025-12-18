@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:51:37 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/17 11:21:09 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:30:56 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (output);
 }
-
