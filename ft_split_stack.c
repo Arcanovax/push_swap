@@ -6,22 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:20:30 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:26:29 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-// static void	ft_freeing(char ***split, size_t j)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < j)
-// 		free((*split)[i++]);
-// 	free(*split);
-// 	*split = NULL;
-// }
+#include "push_swap_common.h"
 
 static int	ft_atoi_stack(const char *str)
 {
@@ -74,29 +63,6 @@ static int	add_node(t_stack *stack, int nb)
 	stack->tails = new;
 	return (1);
 }
-
-// static int	ft_split_size_allocate(const char *s, char c)
-// {
-// 	size_t	i;
-// 	size_t	size;
-// 	int		in_sep;
-
-// 	in_sep = 1;
-// 	i = 0;
-// 	size = 0;
-// 	while (s[i])
-// 	{
-// 		if (in_sep == 1 && s[i] != c)
-// 		{
-// 			size++;
-// 			in_sep = 0;
-// 		}
-// 		else if (in_sep == 0 && s[i] == c)
-// 			in_sep = 1;
-// 		i++;
-// 	}
-// 	return (size + 1);
-// }
 
 static int	ft_split_add(char **split, size_t *i, const char *str, char sep)
 {

@@ -6,11 +6,13 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:59:20 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:36:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_common.h"
+
+char	*get_next_line(int fd);
 
 static int	ft_strcmp(char *s1, char *s2)
 {

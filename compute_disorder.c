@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   compute_disorder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:01:04 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 11:26:24 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 12:26:03 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_common.h"
 
 double	compute_disorder(t_stack *stack)
 {

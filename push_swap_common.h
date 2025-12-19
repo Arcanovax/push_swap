@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 10:58:55 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 11:35:06 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:35:50 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-
 int		ft_split_node(t_stack *stack, char const *s);
 
 int		ft_swap(t_stack *stack);
@@ -49,6 +48,5 @@ int		ft_strlen_secure(char *str);
 int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
 int		ft_free_exit(char *str, t_stack *a, t_stack *b);
 double	compute_disorder(t_stack *stack);
-
 
 #endif
