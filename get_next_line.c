@@ -6,13 +6,13 @@
 /*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:51:37 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 13:04:55 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 13:35:14 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_find(char *buffer)
+static int	ft_find(char *buffer)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	ft_find(char *buffer)
 	return (-1);
 }
 
-void	ft_remove_start(char *buffer, int to_remove)
+static void	ft_remove_start(char *buffer, int to_remove)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ void	ft_remove_start(char *buffer, int to_remove)
 	buffer[i] = '\0';
 }
 
-char	*ft_creat_string(char *output, char *buffer, char *new)
+static char	*ft_creat_string(char *output, char *buffer, char *new)
 {
 	int	i;
 	int	j;
@@ -72,7 +72,7 @@ char	*ft_creat_string(char *output, char *buffer, char *new)
 	return (new);
 }
 
-char	*ft_add_left(char *output, char *buffer)
+static char	*ft_add_left(char *output, char *buffer)
 {
 	char	*new;
 	int		size;
