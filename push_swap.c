@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 09:44:31 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 11:31:52 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/18 16:00:28 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ static int	ft_sort_stack(t_stack *a, t_stack *b, int flag)
 	if (flag & (1 << 2))
 		if (ft_init_log(&log) == -1)
 			return (-1);
-	if (cp_disorder < 0)
-	{
-		free(log);
-		return (-1);
-	}
 	if (cp_disorder != 1 && handle_flag(a, b, flag, log) == -1)
 	{
 		free(log);

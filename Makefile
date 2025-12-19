@@ -4,45 +4,42 @@ NAME_bonus = checker
 CC = cc
 
 SRCS = \
-	compute_disorder.c	\
-	debug.c			\
-	ft_bucket.c			\
-	ft_flag.c			\
-	ft_free_exit.c		\
-	ft_init.c			\
-	ft_print.c			\
-	ft_processe.c		\
-	ft_push.c			\
-	ft_put_type.c		\
-	ft_radix.c			\
-	ft_reverse_rotate.c	\
-	ft_rotate.c			\
-	ft_seletion.c		\
-	ft_split_stack.c	\
-	ft_swap.c			\
-	push_swap.c			\
-	ft_bucket_utils.c	\
+	push_swap.c					\
+	ft_init.c					\
+	ft_flag.c					\
+	ft_processe.c				\
+	compute_disorder.c			\
+	ft_print.c					\
+	ft_put_type.c				\
+	ft_free_exit.c				\
+	ft_push.c					\
+	ft_push_letter.c			\
+	ft_swap.c					\
+	ft_swap_letter.c			\
+	ft_rotate.c					\
+	ft_rotate_letter.c			\
+	ft_reverse_rotate.c			\
+	ft_reverse_rotate_letter.c	\
+	ft_radix.c					\
+	ft_bucket.c					\
+	ft_seletion.c				\
+	ft_split_stack.c			\
+	ft_bucket_utils.c			\
+
 
 SRCS_BONUS= \
 	checker.c			\
-	debug.c				\
 	get_next_line.c		\
 	compute_disorder.c	\
-	ft_bucket.c			\
-	ft_flag.c			\
 	ft_free_exit.c		\
 	ft_init.c			\
-	ft_print.c			\
 	ft_processe.c		\
 	ft_push.c			\
 	ft_put_type.c		\
-	ft_radix.c			\
 	ft_reverse_rotate.c	\
 	ft_rotate.c			\
-	ft_seletion.c		\
 	ft_split_stack.c	\
 	ft_swap.c			\
-	ft_bucket_utils.c	\
 
 
 OBJDIR = .obj

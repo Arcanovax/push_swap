@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 14:01:47 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 11:18:41 by mboutte          ###   ########.fr       */
+/*   Created: 2025/12/19 10:48:15 by mboutte           #+#    #+#             */
+/*   Updated: 2025/12/19 11:36:28 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_common.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	ft_swap(t_stack *stack)
-{
-	int	tmp;
+# include "push_swap_common.h"
 
-	if (!stack || !stack->head || !stack->head->next)
-		return (-1);
-	tmp = stack->head->value;
-	stack->head->value = stack->head->next->value;
-	stack->head->next->value = tmp;
-	return (0);
-}
+char	*get_next_line(int fd);
 
-int	ft_swap_swap(t_stack *a, t_stack *b)
-{
-	if (ft_swap(a) == 0 && ft_swap(b) == 0)
-		return (0);
-	return (-1);
-}
+#endif

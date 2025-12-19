@@ -6,22 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:20:30 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 11:15:10 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-// static void	ft_freeing(char ***split, size_t j)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (i < j)
-// 		free((*split)[i++]);
-// 	free(*split);
-// 	*split = NULL;
-// }
+#include "push_swap_common.h"
 
 static int	ft_atoi_stack(const char *str)
 {

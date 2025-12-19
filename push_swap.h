@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 13:50:42 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/18 16:00:32 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 11:10:15 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
-# include <stdlib.h>
 # include <unistd.h>
 
-# include <stdio.h>
-// # include <fcntl.h>
-
-# define BUFFER_SIZE 64
+# include "push_swap_common.h"
 
 typedef struct s_bucket
 {
@@ -31,20 +27,6 @@ typedef struct s_bucket
 	int	range_min;
 	int	range_max;
 }	t_bucket;
-
-typedef struct s_stack
-{
-	struct s_node	*head;
-	struct s_node	*tails;
-	int				size;
-}	t_stack;
-
-typedef struct s_node
-{
-	int				value;
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_node;
 
 typedef struct s_log
 {
@@ -61,21 +43,14 @@ typedef struct s_log
 	int	rrr;
 }	t_log;
 
-int		ft_swap(t_stack *stack);
-int		ft_swap_swap(t_stack *a, t_stack *b);
 int		ft_swap_a(t_stack *a, t_log *log);
 int		ft_swap_b(t_stack *b, t_log *log);
 int		ft_swap_ab(t_stack *a, t_stack *b, t_log *log);
-int		ft_push(t_stack *stack_target, t_stack *stack_node);
 int		ft_push_a(t_stack *a, t_stack *b, t_log *log);
 int		ft_push_b(t_stack *a, t_stack *b, t_log *log);
-int		ft_rotate(t_stack *stack);
-int		ft_rotate_rotate(t_stack *a, t_stack *b);
 int		ft_rotate_a(t_stack *a, t_log *log);
 int		ft_rotate_b(t_stack *b, t_log *log);
 int		ft_rotate_ab(t_stack *a, t_stack *b, t_log *log);
-int		ft_reverse_rotate(t_stack *stack);
-int		ft_reverse_rotate_rotate(t_stack *a, t_stack *b);
 int		ft_reverse_rotate_a(t_stack *a, t_log *log);
 int		ft_reverse_rotate_b(t_stack *b, t_log *log);
 int		ft_reverse_rotate_ab(t_stack *a, t_stack *b, t_log *log);
@@ -88,28 +63,15 @@ int		ft_sqrt(int nb);
 void	get_min_max(t_stack *a, t_bucket *bucket);
 int		get_bucket_imax(t_stack *b, int range_min);
 
-int		ft_free_all_on_error(char *str, t_stack *a, t_stack *b);
-int		ft_free_exit(char *str, t_stack *a, t_stack *b);
-
 int		ft_split_node(t_stack *stack, char const *s);
 
-int		init_stack(t_stack **stack);
-int		ft_init_log(t_log **log);
-char	*ft_alloc_str(char *str);
-char	*ft_cat_nb(char *base, char *cating);
-
 int		ft_print_bench(double cp_disorder, int flag, t_log *log, int size);
-double	compute_disorder(t_stack *stack);
+
+int		ft_init_log(t_log **log);
 
 int		ft_putnbr_fd(int n, int fd);
 void	ft_putdouble_fd(double x, int precision, int fd);
 
-//this ft need to be remove
-void	ft_print_stack(t_stack *stk);
-
-char	*get_next_line(int fd);
-
 int		get_flag(char *arg, int *flag);
 
-int		ft_strlen_secure(char *str);
 #endif
