@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:26:29 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 13:09:08 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	ft_split_node(t_stack *stack, char const *s)
 	while (state == 0)
 	{
 		state = ft_split_add(&result, &i, s, ' ');
+		if (state < 0)
+			return (-1);
 		if (!result)
 			return (1);
 		nb = ft_atoi_stack(result);
