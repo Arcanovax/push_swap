@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:51:37 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 13:35:14 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 13:54:01 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	*get_next_line(int fd)
 	if (buffer[0] != '\0')
 		output = ft_add_left(output, buffer);
 	byte_read = read(fd, buffer, 64);
-	while (byte_read > 0 && !(buffer[0] != '\0' && !output))
+	while (byte_read > 0)
 	{
 		buffer[byte_read] = '\0';
 		output = ft_add_left(output, buffer);
