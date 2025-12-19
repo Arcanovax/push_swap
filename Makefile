@@ -10,7 +10,7 @@ SRCS = \
 	ft_free_exit.c				\
 	ft_init.c					\
 	ft_print.c					\
-	ft_processe.c				\
+	ft_process.c				\
 	ft_push.c					\
 	ft_put_type.c				\
 	ft_radix.c					\
@@ -32,7 +32,7 @@ SRCS_BONUS= \
 	compute_disorder.c	\
 	ft_free_exit.c		\
 	ft_init.c			\
-	ft_processe.c		\
+	ft_process.c		\
 	ft_push.c			\
 	ft_reverse_rotate.c	\
 	ft_rotate.c			\
