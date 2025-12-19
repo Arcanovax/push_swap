@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:36:14 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:50:01 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	parcing(int argc, char **argv, t_stack **a, t_stack **b)
 		str = ft_alloc_str(argv[i++]);
 	while (str && i < argc)
 		str = ft_cat_nb(str, argv[i++]);
+	if (!str)
+		return (-1);
 	if ((ft_split_node(*a, str) < 0) || !(*a)->head)
 	{
 		if (str)
