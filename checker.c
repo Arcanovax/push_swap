@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:50:01 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 13:38:33 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,7 @@ static int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-int	ft_empty_char(char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	i++;
-	j = 0;
-	while (str[i])
-	{
-		str[j] = str[i];
-		i++;
-		j++;
-	}
-	str[j] = '\0';
-	return (1);
-}
-
-int	ft_exec(char *str, t_stack *a, t_stack *b)
+static int	ft_exec(char *str, t_stack *a, t_stack *b)
 {
 	if (ft_strcmp(str, "sa\n") == 0)
 		return (ft_swap(a));
@@ -77,7 +57,7 @@ int	ft_exec(char *str, t_stack *a, t_stack *b)
 	return (-1);
 }
 
-int	parcing(int argc, char **argv, t_stack **a, t_stack **b)
+static int	parcing(int argc, char **argv, t_stack **a, t_stack **b)
 {
 	int		i;
 	char	*str;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 00:09:39 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 13:30:11 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 	return (i);
 }
 
-int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
+static int	ft_align(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
 
@@ -115,7 +115,7 @@ int	ft_bucket(t_stack *a, t_stack *b, t_log *log)
 	bucket.size = (bucket.max - bucket.min + 1) / bucket.nb;
 	if (create_bucket(a, b, &bucket, log) < 0)
 		return (-1);
-	if (ft_align_buckets(a, b, &bucket, log) < 0)
+	if (ft_align(a, b, &bucket, log) < 0)
 		return (-1);
 	return (1);
 }
