@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 13:38:33 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 13:57:35 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 
 	if (parcing(argc, argv, &a, &b) < 0 || a->size == 0)
+		return (ft_free_all_on_error(NULL, a, b));
+	if (compute_disorder(a) == -1)
 		return (ft_free_all_on_error(NULL, a, b));
 	line = get_next_line(0);
 	while (line)
