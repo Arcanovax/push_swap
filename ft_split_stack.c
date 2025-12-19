@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 13:13:19 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 14:28:31 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_common.h"
 
-static int	ft_atoi_stack(const char *str)
+static int	ft_atoi_stack(const char *str, int *state)
 {
-	int	all;
+	long long int	all;
 	int	sign;
 	int	i;
 
@@ -29,12 +29,14 @@ static int	ft_atoi_stack(const char *str)
 			sign = -sign;
 		i++;
 	}
-	while ('0' <= str[i] && str[i] <= '9')
+	while ('0' <= str[i] && str[i] <= '9' && *state != -1)
 	{
 		all = all * 10 + str[i] - '0';
+		if ((sign == 1 && all > 2147483647) || (sign == -1 && all > 2147483648))
+			*state = -1;
 		i++;
 	}
-	return (all * sign);
+	return (((int) all) * sign);
 }
 
 static int	add_node(t_stack *stack, int nb)
@@ -107,10 +109,13 @@ int	ft_split_node(t_stack *stack, char const *s)
 			return (-1);
 		if (!result)
 			return (1);
-		nb = ft_atoi_stack(result);
+		nb = ft_atoi_stack(result, &state);
 		free(result);
-		if (add_node(stack, nb) < 0)
-			return (-1);
+		if (state != -1)
+			if (add_node(stack, nb) < 0)
+				return (-1);
 	}
+	if (state < 0)
+		return (-1);
 	return (1);
 }

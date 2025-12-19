@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 10:58:55 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:35:50 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:26:49 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_COMMON_H
 
 # include <unistd.h>
+# include <limits.h>
+
 # include <stdlib.h>
 
 typedef struct s_stack

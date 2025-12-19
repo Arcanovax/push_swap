@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:48:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 11:33:52 by mthetcha         ###   ########lyon.fr   */
+/*   Updated: 2025/12/19 14:09:28 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_free_all_on_error(char *str, t_stack *a, t_stack *b)
 		ft_free_t_stack(a);
 	if (b)
 		ft_free_t_stack(b);
-	write(1, "Error", 5);
+	write(2, "Error\n", 6);
 	return (-1);
 }
 
