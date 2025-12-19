@@ -2,6 +2,7 @@ NAME = push_swap
 NAME_bonus = checker
 
 CC = cc
+CFLAGS += -Werror -Wextra -Wall -MMD -MP
 
 SRCS = \
 	push_swap.c					\
@@ -46,8 +47,6 @@ OBJS_bonus = $(SRCS_BONUS:%.c=$(OBJDIR)/%.o)
 
 DEPS = $(OBJS:.o=.d)
 DEPS_bonus = $(OBJS_bonus:.o=.d)
-
-CFLAGS += -Werror -Wextra -Wall -MMD -MP
 
 all: $(NAME)
 
