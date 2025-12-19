@@ -86,4 +86,4 @@ In our program, we use formulas based on graphs to choose the best algorithm bas
 <p style="text-align:center;">
   <img src=".images_readme/500nb_cpDis_50.png" width="1280">
   <img src=".images_readme/graph_3D.png" width="1280">
-  (by mboutte)
+</p>
