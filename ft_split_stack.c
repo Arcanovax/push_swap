@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 14:51:13 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:52:30 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	ft_atoi_stack(const char *str, int *state)
 {
 	long long int	all;
-	int	sign;
-	int	i;
+	int				sign;
+	int				i;
 
 	i = 0;
 	all = 0;
@@ -38,7 +38,7 @@ static int	ft_atoi_stack(const char *str, int *state)
 			*state = -1;
 		i++;
 	}
-	return (((int) all) * sign);
+	return (((int)all) * sign);
 }
 
 static int	add_node(t_stack *stack, int nb)

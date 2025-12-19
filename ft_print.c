@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 17:52:30 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 15:22:25 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:53:14 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_print_bench(double cp_disorder, int flag, t_log *log, int size)
 	write(fd, line, 10);
 	write(fd, "PUSH SWAP / 42 Project By Mboutte and Mthetcha", 46);
 	write(fd, line, 10);
-	write(1, "\n", 1);
+	write(fd, "\n", 1);
 	write(fd, "\033[38;2;0;0;255m", 15);
 	write(fd, "Compute disorder : ", 19);
 	write(fd, "\033[0m", 4);
