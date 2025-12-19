@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:02:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:26:29 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 12:56:26 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	add_node(t_stack *stack, int nb)
 
 	new = malloc(sizeof(t_node));
 	if (!new)
-		return (0);
+		return (-1);
 	new->value = nb;
 	new->next = NULL;
 	if (stack->tails)
@@ -107,8 +107,8 @@ int	ft_split_node(t_stack *stack, char const *s)
 			return (1);
 		nb = ft_atoi_stack(result);
 		free(result);
-		if (!add_node(stack, nb))
-			return (0);
+		if (add_node(stack, nb) < 0)
+			return (-1);
 	}
 	return (1);
 }
