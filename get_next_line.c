@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:51:37 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 11:14:36 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:30:56 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int	ft_find(char *buffer)
 {
@@ -90,25 +90,25 @@ char	*ft_add_left(char *output, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[64 + 1];
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*output;
 	int			byte_read;
 
-	if (fd < 0)
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	output = NULL;
 	if (ft_find(buffer) > -1)
 		return (ft_add_left(output, buffer));
 	if (buffer[0] != '\0')
 		output = ft_add_left(output, buffer);
-	byte_read = read(fd, buffer, 64);
+	byte_read = read(fd, buffer, BUFFER_SIZE);
 	while (byte_read > 0)
 	{
 		buffer[byte_read] = '\0';
 		output = ft_add_left(output, buffer);
 		if (output && ft_find(output) > -1)
 			return (output);
-		byte_read = read(fd, buffer, 64);
+		byte_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	if (byte_read == -1 && (output))
 		free(output);

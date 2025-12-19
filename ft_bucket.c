@@ -6,11 +6,12 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:24:13 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 11:12:18 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 00:09:39 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static int	ft_push_max(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
@@ -84,12 +85,10 @@ static int	create_bucket(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 int	ft_align_buckets(t_stack *a, t_stack *b, t_bucket *bucket, t_log *log)
 {
 	int	i;
-	int	j;
 
 	i = bucket->nb;
 	while (b->size)
 	{
-		j = 0;
 		bucket->range_min = bucket->min + (i * bucket->size);
 		if (i == bucket->nb - 1)
 			bucket->range_max = bucket->max;

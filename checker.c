@@ -6,11 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 11:36:00 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 10:52:32 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/18 15:59:20 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	ft_strcmp(char *s1, char *s2)
 {

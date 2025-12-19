@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_processe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: mthetcha <mthetcha@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:07:03 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/18 17:03:54 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 10:42:36 by mthetcha         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,12 @@ static int	ft_full_of_int(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-	{		
-	if (!('0' <= str[i] && str[i] <= '9') && !(str[i] == ' ')
+	i = -1;
+	while (str[++i])
+		if (!('0' <= str[i] && str[i] <= '9') && !(str[i] == ' ')
 			&& !(9 <= str[i] && str[i] <= 13) && !(str[i] == '-')
 			&& !(str[i] == '+'))
 			return (0);
-	i++;
-	}
 	return (1);
 }
 
@@ -46,7 +43,10 @@ char	*ft_cat_nb(char *base, char *cating)
 	char	*new_str;
 
 	if (ft_full_of_int(cating) == 0)
+	{
+		free(base);
 		return (NULL);
+	}
 	new_str = malloc(sizeof(char) * (ft_strlen_secure(base)
 				+ ft_strlen_secure(cating) + 2));
 	if (!new_str)
@@ -54,12 +54,9 @@ char	*ft_cat_nb(char *base, char *cating)
 		free(base);
 		return (NULL);
 	}
-	i = 0;
-	while (base[i])
-	{
+	i = -1;
+	while (base[++i])
 		new_str[i] = base[i];
-		i++;
-	}
 	new_str[i++] = ' ';
 	while (*cating)
 		new_str[i++] = *cating++;
