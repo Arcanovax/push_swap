@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_letter.c                                   :+:      :+:    :+:   */
+/*   ft_init_log.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 14:33:35 by mthetcha          #+#    #+#             */
-/*   Updated: 2025/12/19 15:18:00 by mboutte          ###   ########.fr       */
+/*   Created: 2025/12/19 14:59:50 by mboutte           #+#    #+#             */
+/*   Updated: 2025/12/19 15:00:09 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_push_a(t_stack *a, t_stack *b, t_log *log)
+int	ft_init_log(t_log **log)
 {
-	if (ft_push(a, b) == -1)
+	*log = malloc(sizeof(t_log));
+	if (!(*log))
 		return (-1);
-	if (log)
-		log->pa += 1;
-	return (write(1, "pa\n", 3));
-}
-
-int	ft_push_b(t_stack *a, t_stack *b, t_log *log)
-{
-	if (ft_push(b, a) == -1)
-		return (-1);
-	if (log)
-		log->pb += 1;
-	return (write(1, "pb\n", 3));
+	(*log)->sa = 0;
+	(*log)->sb = 0;
+	(*log)->ss = 0;
+	(*log)->pa = 0;
+	(*log)->pb = 0;
+	(*log)->ra = 0;
+	(*log)->rb = 0;
+	(*log)->rr = 0;
+	(*log)->rra = 0;
+	(*log)->rrb = 0;
+	(*log)->rrr = 0;
+	return (1);
 }

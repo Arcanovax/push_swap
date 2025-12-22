@@ -6,7 +6,8 @@ CFLAGS += -Werror -Wextra -Wall -MMD -MP
 
 SRCS = \
 	push_swap.c					\
-	ft_init.c					\
+	ft_init_stack.c				\
+	ft_init_log.c				\
 	ft_flag.c					\
 	ft_split_stack.c			\
 	ft_process.c				\
@@ -29,7 +30,7 @@ SRCS = \
 
 SRCS_BONUS= \
 	checker.c			\
-	ft_init.c			\
+	ft_init_stack.c		\
 	ft_split_stack.c	\
 	get_next_line.c		\
 	compute_disorder.c	\

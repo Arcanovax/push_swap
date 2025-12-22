@@ -6,7 +6,7 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 16:16:27 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/17 14:33:22 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 15:37:05 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ static int	ft_radix_push_bit(t_stack *origin, t_stack *target, t_log *log,
 	return (error);
 }
 
-static int	ft_radix_empty(t_stack *origin, t_stack *target, t_log *log,
-		int bit)
+static int	ft_radix_empty(t_stack *origin, t_stack *target, t_log *log)
 {
 	int	size;
 	int	error;
@@ -90,12 +89,7 @@ static int	ft_radix_empty(t_stack *origin, t_stack *target, t_log *log,
 	error = 1;
 	size = origin->size;
 	while (size-- && error >= 0)
-	{
-		if ((origin->head->value - INT_MIN) & 1 << (bit))
-			error = ft_push_a(target, origin, log);
-		else
-			error = ft_rotate_b(origin, log);
-	}
+		error = ft_push_a(target, origin, log);
 	return (error);
 }
 
@@ -112,11 +106,8 @@ int	ft_radix(t_stack *a, t_stack *b, t_log *log)
 	while (bit <= end && error >= 0)
 	{
 		error = ft_radix_push_bit(a, b, log, bit);
+		error = ft_radix_empty(b, a, log);
 		bit++;
-		if (bit <= end && error >= 0)
-			error = ft_radix_empty(b, a, log, bit);
 	}
-	while (b->head)
-		ft_push_a(a, b, log);
 	return (error);
 }

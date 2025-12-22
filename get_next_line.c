@@ -6,11 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:51:37 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 13:54:01 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:57:45 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_common.h"
 
 static int	ft_find(char *buffer)
 {

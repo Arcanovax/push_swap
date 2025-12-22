@@ -6,11 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 17:07:03 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 12:52:48 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:58:10 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_common.h"
 
 static int	ft_full_of_int(char *str)
 {

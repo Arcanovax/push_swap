@@ -6,11 +6,11 @@
 /*   By: mboutte <mboutte@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:48:58 by mboutte           #+#    #+#             */
-/*   Updated: 2025/12/19 14:09:28 by mboutte          ###   ########.fr       */
+/*   Updated: 2025/12/19 14:58:47 by mboutte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_common.h"
 
 static void	ft_free_t_stack(t_stack *stack)
 {
